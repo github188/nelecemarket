@@ -19,26 +19,26 @@
 		</javaTypeResolver>
 
 		<!-- 指定javaBean生成的位置 -->
-		<javaModelGenerator targetPackage="com.dapeng.prosorder.bean"
+		<javaModelGenerator targetPackage="com.dapeng.splb.bean"
 			targetProject=".\src\main\java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
 		<!--指定sql映射文件生成的位置 -->
-		<sqlMapGenerator targetPackage="com.dapeng.prosorder.dao" targetProject=".\src\main\java">
+		<sqlMapGenerator targetPackage="com.dapeng.splb.dao" targetProject=".\src\main\java">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 
 		<!-- 指定dao接口生成的位置，mapper接口 -->
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.dapeng.prosorder.dao" targetProject=".\src\main\java">
+			targetPackage="com.dapeng.splb.dao" targetProject=".\src\main\java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
 
 		<!-- table指定每个表的生成策略 -->
-		<table tableName="prosorder" domainObjectName="ProsOrder"></table>
+		<table tableName="splb" domainObjectName="Splb"></table>
 		<!-- <table tableName="tbl_dept" domainObjectName="Department"></table> -->
 	</context>
 </generatorConfiguration>
