@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dapeng.yqlj.dao.YqljMapper">
+  <resultMap id="BaseResultMap" type="com.dapeng.yqlj.bean.Yqlj">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ljname" jdbcType="VARCHAR" property="ljname" />
+    <result column="ljurl" jdbcType="VARCHAR" property="ljurl" />
+    <result column="filename" jdbcType="VARCHAR" property="filename" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, ljname, ljurl, filename
+  </sql>
+  <select id="selectByExample" parameterType="com.dapeng.yqlj.bean.YqljExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from yqlj
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yqlj
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yqlj
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dapeng.yqlj.bean.YqljExample">
+    delete from yqlj
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dapeng.yqlj.bean.Yqlj">
+    insert into yqlj (id, ljname, ljurl, 
+      filename)
+    values (#{id,jdbcType=INTEGER}, #{ljname,jdbcType=VARCHAR}, #{ljurl,jdbcType=VARCHAR}, 
+      #{filename,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dapeng.yqlj.bean.Yqlj">
+    insert into yqlj
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="ljname != null">
+        ljname,
+      </if>
+      <if test="ljurl != null">
+        ljurl,
+      </if>
+      <if test="filename != null">
+        filename,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ljname != null">
+        #{ljname,jdbcType=VARCHAR},
+      </if>
+      <if test="ljurl != null">
+        #{ljurl,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null">
+        #{filename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dapeng.yqlj.bean.YqljExample" resultType="java.lang.Long">
+    select count(*) from yqlj
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update yqlj
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.ljname != null">
+        ljname = #{record.ljname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ljurl != null">
+        ljurl = #{record.ljurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filename != null">
+        filename = #{record.filename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update yqlj
+    set id = #{record.id,jdbcType=INTEGER},
+      ljname = #{record.ljname,jdbcType=VARCHAR},
+      ljurl = #{record.ljurl,jdbcType=VARCHAR},
+      filename = #{record.filename,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dapeng.yqlj.bean.Yqlj">
+    update yqlj
+    <set>
+      <if test="ljname != null">
+        ljname = #{ljname,jdbcType=VARCHAR},
+      </if>
+      <if test="ljurl != null">
+        ljurl = #{ljurl,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null">
+        filename = #{filename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dapeng.yqlj.bean.Yqlj">
+    update yqlj
+    set ljname = #{ljname,jdbcType=VARCHAR},
+      ljurl = #{ljurl,jdbcType=VARCHAR},
+      filename = #{filename,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
