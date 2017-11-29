@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dapeng.sysuser.dao.SysUuerMapper">
+  <resultMap id="BaseResultMap" type="com.dapeng.sysuser.bean.SysUuer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uname" jdbcType="VARCHAR" property="uname" />
+    <result column="upass" jdbcType="VARCHAR" property="upass" />
+    <result column="utype" jdbcType="VARCHAR" property="utype" />
+    <result column="tname" jdbcType="VARCHAR" property="tname" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="addrs" jdbcType="VARCHAR" property="addrs" />
+    <result column="filename" jdbcType="VARCHAR" property="filename" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="bei" jdbcType="VARCHAR" property="bei" />
+    <result column="savetime" jdbcType="TIMESTAMP" property="savetime" />
+    <result column="yue" jdbcType="DOUBLE" property="yue" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, uname, upass, utype, tname, sex, age, tel, addrs, filename, qq, bei, savetime, 
+    yue
+  </sql>
+  <select id="selectByExample" parameterType="com.dapeng.sysuser.bean.SysUuerExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sysuser
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sysuser
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sysuser
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dapeng.sysuser.bean.SysUuerExample">
+    delete from sysuser
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dapeng.sysuser.bean.SysUuer">
+    insert into sysuser (id, uname, upass, 
+      utype, tname, sex, 
+      age, tel, addrs, filename, 
+      qq, bei, savetime, 
+      yue)
+    values (#{id,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{upass,jdbcType=VARCHAR}, 
+      #{utype,jdbcType=VARCHAR}, #{tname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{age,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{addrs,jdbcType=VARCHAR}, #{filename,jdbcType=VARCHAR}, 
+      #{qq,jdbcType=VARCHAR}, #{bei,jdbcType=VARCHAR}, #{savetime,jdbcType=TIMESTAMP}, 
+      #{yue,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dapeng.sysuser.bean.SysUuer">
+    insert into sysuser
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uname != null">
+        uname,
+      </if>
+      <if test="upass != null">
+        upass,
+      </if>
+      <if test="utype != null">
+        utype,
+      </if>
+      <if test="tname != null">
+        tname,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="addrs != null">
+        addrs,
+      </if>
+      <if test="filename != null">
+        filename,
+      </if>
+      <if test="qq != null">
+        qq,
+      </if>
+      <if test="bei != null">
+        bei,
+      </if>
+      <if test="savetime != null">
+        savetime,
+      </if>
+      <if test="yue != null">
+        yue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null">
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="upass != null">
+        #{upass,jdbcType=VARCHAR},
+      </if>
+      <if test="utype != null">
+        #{utype,jdbcType=VARCHAR},
+      </if>
+      <if test="tname != null">
+        #{tname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="addrs != null">
+        #{addrs,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null">
+        #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="bei != null">
+        #{bei,jdbcType=VARCHAR},
+      </if>
+      <if test="savetime != null">
+        #{savetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yue != null">
+        #{yue,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dapeng.sysuser.bean.SysUuerExample" resultType="java.lang.Long">
+    select count(*) from sysuser
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update sysuser
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.uname != null">
+        uname = #{record.uname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upass != null">
+        upass = #{record.upass,jdbcType=VARCHAR},
+      </if>
+      <if test="record.utype != null">
+        utype = #{record.utype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tname != null">
+        tname = #{record.tname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.age != null">
+        age = #{record.age,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tel != null">
+        tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addrs != null">
+        addrs = #{record.addrs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filename != null">
+        filename = #{record.filename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qq != null">
+        qq = #{record.qq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bei != null">
+        bei = #{record.bei,jdbcType=VARCHAR},
+      </if>
+      <if test="record.savetime != null">
+        savetime = #{record.savetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.yue != null">
+        yue = #{record.yue,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update sysuser
+    set id = #{record.id,jdbcType=INTEGER},
+      uname = #{record.uname,jdbcType=VARCHAR},
+      upass = #{record.upass,jdbcType=VARCHAR},
+      utype = #{record.utype,jdbcType=VARCHAR},
+      tname = #{record.tname,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      age = #{record.age,jdbcType=VARCHAR},
+      tel = #{record.tel,jdbcType=VARCHAR},
+      addrs = #{record.addrs,jdbcType=VARCHAR},
+      filename = #{record.filename,jdbcType=VARCHAR},
+      qq = #{record.qq,jdbcType=VARCHAR},
+      bei = #{record.bei,jdbcType=VARCHAR},
+      savetime = #{record.savetime,jdbcType=TIMESTAMP},
+      yue = #{record.yue,jdbcType=DOUBLE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dapeng.sysuser.bean.SysUuer">
+    update sysuser
+    <set>
+      <if test="uname != null">
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="upass != null">
+        upass = #{upass,jdbcType=VARCHAR},
+      </if>
+      <if test="utype != null">
+        utype = #{utype,jdbcType=VARCHAR},
+      </if>
+      <if test="tname != null">
+        tname = #{tname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="addrs != null">
+        addrs = #{addrs,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null">
+        filename = #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="bei != null">
+        bei = #{bei,jdbcType=VARCHAR},
+      </if>
+      <if test="savetime != null">
+        savetime = #{savetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="yue != null">
+        yue = #{yue,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dapeng.sysuser.bean.SysUuer">
+    update sysuser
+    set uname = #{uname,jdbcType=VARCHAR},
+      upass = #{upass,jdbcType=VARCHAR},
+      utype = #{utype,jdbcType=VARCHAR},
+      tname = #{tname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      age = #{age,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      addrs = #{addrs,jdbcType=VARCHAR},
+      filename = #{filename,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      bei = #{bei,jdbcType=VARCHAR},
+      savetime = #{savetime,jdbcType=TIMESTAMP},
+      yue = #{yue,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
