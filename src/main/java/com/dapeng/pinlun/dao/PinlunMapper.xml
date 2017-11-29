@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dapeng.pinlun.dao.PinlunMapper">
+  <resultMap id="BaseResultMap" type="com.dapeng.pinlun.bean.Pinlun">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="saver" jdbcType="VARCHAR" property="saver" />
+    <result column="savetime" jdbcType="TIMESTAMP" property="savetime" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="infotype" jdbcType="VARCHAR" property="infotype" />
+    <result column="huifuren" jdbcType="VARCHAR" property="huifuren" />
+    <result column="huifutime" jdbcType="VARCHAR" property="huifutime" />
+    <result column="huifucontent" jdbcType="VARCHAR" property="huifucontent" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, saver, savetime, content, pid, infotype, huifuren, huifutime, huifucontent
+  </sql>
+  <select id="selectByExample" parameterType="com.dapeng.pinlun.bean.PinlunExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pinlun
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pinlun
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pinlun
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dapeng.pinlun.bean.PinlunExample">
+    delete from pinlun
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dapeng.pinlun.bean.Pinlun">
+    insert into pinlun (id, saver, savetime, 
+      content, pid, infotype, 
+      huifuren, huifutime, huifucontent
+      )
+    values (#{id,jdbcType=INTEGER}, #{saver,jdbcType=VARCHAR}, #{savetime,jdbcType=TIMESTAMP}, 
+      #{content,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{infotype,jdbcType=VARCHAR}, 
+      #{huifuren,jdbcType=VARCHAR}, #{huifutime,jdbcType=VARCHAR}, #{huifucontent,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dapeng.pinlun.bean.Pinlun">
+    insert into pinlun
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="saver != null">
+        saver,
+      </if>
+      <if test="savetime != null">
+        savetime,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="infotype != null">
+        infotype,
+      </if>
+      <if test="huifuren != null">
+        huifuren,
+      </if>
+      <if test="huifutime != null">
+        huifutime,
+      </if>
+      <if test="huifucontent != null">
+        huifucontent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="saver != null">
+        #{saver,jdbcType=VARCHAR},
+      </if>
+      <if test="savetime != null">
+        #{savetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="infotype != null">
+        #{infotype,jdbcType=VARCHAR},
+      </if>
+      <if test="huifuren != null">
+        #{huifuren,jdbcType=VARCHAR},
+      </if>
+      <if test="huifutime != null">
+        #{huifutime,jdbcType=VARCHAR},
+      </if>
+      <if test="huifucontent != null">
+        #{huifucontent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dapeng.pinlun.bean.PinlunExample" resultType="java.lang.Long">
+    select count(*) from pinlun
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update pinlun
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.saver != null">
+        saver = #{record.saver,jdbcType=VARCHAR},
+      </if>
+      <if test="record.savetime != null">
+        savetime = #{record.savetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pid != null">
+        pid = #{record.pid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.infotype != null">
+        infotype = #{record.infotype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.huifuren != null">
+        huifuren = #{record.huifuren,jdbcType=VARCHAR},
+      </if>
+      <if test="record.huifutime != null">
+        huifutime = #{record.huifutime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.huifucontent != null">
+        huifucontent = #{record.huifucontent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update pinlun
+    set id = #{record.id,jdbcType=INTEGER},
+      saver = #{record.saver,jdbcType=VARCHAR},
+      savetime = #{record.savetime,jdbcType=TIMESTAMP},
+      content = #{record.content,jdbcType=VARCHAR},
+      pid = #{record.pid,jdbcType=VARCHAR},
+      infotype = #{record.infotype,jdbcType=VARCHAR},
+      huifuren = #{record.huifuren,jdbcType=VARCHAR},
+      huifutime = #{record.huifutime,jdbcType=VARCHAR},
+      huifucontent = #{record.huifucontent,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dapeng.pinlun.bean.Pinlun">
+    update pinlun
+    <set>
+      <if test="saver != null">
+        saver = #{saver,jdbcType=VARCHAR},
+      </if>
+      <if test="savetime != null">
+        savetime = #{savetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="infotype != null">
+        infotype = #{infotype,jdbcType=VARCHAR},
+      </if>
+      <if test="huifuren != null">
+        huifuren = #{huifuren,jdbcType=VARCHAR},
+      </if>
+      <if test="huifutime != null">
+        huifutime = #{huifutime,jdbcType=VARCHAR},
+      </if>
+      <if test="huifucontent != null">
+        huifucontent = #{huifucontent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dapeng.pinlun.bean.Pinlun">
+    update pinlun
+    set saver = #{saver,jdbcType=VARCHAR},
+      savetime = #{savetime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=VARCHAR},
+      infotype = #{infotype,jdbcType=VARCHAR},
+      huifuren = #{huifuren,jdbcType=VARCHAR},
+      huifutime = #{huifutime,jdbcType=VARCHAR},
+      huifucontent = #{huifucontent,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
