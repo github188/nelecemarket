@@ -1,7 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
-<%@page import="util.PageManager"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -12,38 +10,7 @@
 	<script type="text/javascript" src="/nelecemarket/js/popup.js"></script>
 	<script type="text/javascript" src="/nelecemarket/js/calendar/WdatePicker.js"></script>
   </head>
-  <%
-  CommDAO dao = new CommDAO();
- HashMap user = Info.getUser(request);
- 
-   String key = request.getParameter("key")==null?"":request.getParameter("key");
- 
-  String did = request.getParameter("did")==null?"":request.getParameter("did");
-  
-  if(!did.equals(""))
-  {
-  dao.commOper("delete from xiaos where id="+did);
-  }
-  dao.close();
-  
-  
-  
-  String url = "rbookhj.jsp?1=1";
-  String sql = "select * from xiaos where uname='"+user.get("uname")+"' "; 
-  
-  if(!key.equals(""))
-  {
-  url+="&key="+key;
-  sql+=" and (shj like '%"+key+"%' or goodname like '%"+key+"%' ) ";
-  }
- 
-  sql+=" order by id desc";
-  System.out.println(sql);
-  PageManager pageManager = PageManager.getPage(url, 10, request);
-  pageManager.doList(sql);
-  PageManager bean = (PageManager) request.getAttribute("page");
-  ArrayList<HashMap> nlist = (ArrayList) bean.getCollection();
-   %>
+
   <body>
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<form name="f1" method="post" action="/nelecemarket/admin/rbookhj.jsp" >
@@ -89,33 +56,29 @@
           <td class="itemtitle">操作</td>
   </tr>
         
-         <%
- 
-  for(HashMap map:nlist)
-  {
-    %>
+       
         <tr align="center">
-          <td align="center"> <%=map.get("shj").equals("")?"&nbsp;":map.get("shj") %> </td>
-            <td align="center"> <%=map.get("goodname").equals("")?"&nbsp;":map.get("goodname") %> </td>
-           <td align="center"> <%=map.get("nums").equals("")?"&nbsp;":map.get("nums") %> </td>
-            <td align="center"> <%=map.get("price").equals("")?"&nbsp;":map.get("price") %> </td>
-          <td align="center"> <%=map.get("goodtm").equals("")?"&nbsp;":map.get("goodtm") %> </td>
-            <td align="center"> <%=map.get("stime").equals("")?"&nbsp;":map.get("stime") %> </td>
+          <td align="center"> </td>
+            <td align="center">  </td>
+           <td align="center"> </td>
+            <td align="center">  </td>
+          <td align="center"></td>
+            <td align="center">  </td>
            
            
            
           <td align="center">
           
           
-          <a href="javascript:update('<%=map.get("id")%>')">修改</a>
+          <a href="javascript:update('')">修改</a>
           &nbsp;|&nbsp;&nbsp;
-          <a href="rbookhj.jsp?did=<%=map.get("id")%>">删除</a>
+          <a href="rbookhj.jsp?did=">删除</a>
           
           
           
           </td>
   </tr>
-        <%} %>
+     
         
         
         <script type="text/javascript">
@@ -138,19 +101,15 @@
           </script>
         
         <tr align="center">
-          <td align="right" colspan="13"><%=bean.getInfo() %></td>
+          <td align="right" colspan="13"></td>
         </tr>
       </table>
       </form>
 </body>
 </html>
-<%
-if(request.getAttribute("suc")!=null)
-{
- %>
+
  <script type="text/javascript">
 <!--
 alert("添加成功")
 //-->
 </script>
-<%}%>

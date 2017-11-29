@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="util.PageManager"%>
-<%@page import="dao.CommDAO"%>
+
  
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -11,33 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="/nelecemarket/admin/commfiles/css/style.css" /> 
 	<script type="text/javascript" src="/nelecemarket/js/popup.js"></script>
   </head>
-  <%
- CommDAO dao = new CommDAO();
-   String key = request.getParameter("key")==null?"":request.getParameter("key");
-  String did = request.getParameter("did")==null?"":request.getParameter("did");
   
-  if(!did.equals(""))
-  {
-  dao.commOper("delete from yqlj where id="+did);
-  }
-  dao.close();
-  
-  String url = "yqlj.jsp?1=1";
-  String sql = "select * from yqlj  where 1=1 ";
-  
-  if(!key.equals(""))
-  {
-  url+="&key="+key;
-  sql+=" and ljname like '%"+key+"%' ";
-  } 
-  
-  sql+=" order by id desc";
-  System.out.println(sql);
-  PageManager pageManager = PageManager.getPage(url, 10, request);
-  pageManager.doList(sql);
-  PageManager bean = (PageManager) request.getAttribute("page");
-  ArrayList<HashMap> nlist = (ArrayList) bean.getCollection();
-   %>
   <body>
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<form name="f1" method="post" action="/nelecemarket/admin/yqlj.jsp" >
@@ -45,7 +18,7 @@
 					class="tableform">
 			<tr>
      				 <td width=5% height="31" align="center" style="font-size: 12px">相关信息&nbsp;:</td>
-	    <td width=14% style="font-size: 12px" align="left"><input name="key" size="35" value="<%=key %>" type="text"></td>
+	    <td width=14% style="font-size: 12px" align="left"><input name="key" size="35" value="" type="text"></td>
 				 
 					<td width=20% style="font-size: 12px" align="right">
 					<input type="submit" class="btn3_mouseup" value="查询">&nbsp;&nbsp;
@@ -70,23 +43,19 @@
           <td class="itemtitle">操作</td>
   </tr>
         
-         <%
- 
-  for(HashMap map:nlist)
-  {
-    %>
+      
         <tr align="center">
-          <td align="center"> <%=map.get("ljname").equals("")?"&nbsp;":map.get("ljname") %> </td>
-          <td align="center"> <%=map.get("ljurl").equals("")?"&nbsp;":map.get("ljurl") %>  </td>
+          <td align="center">  </td>
+          <td align="center">   </td>
           <td align="center"> 
           
-          <img height="45" width="80" src="/nelecemarket/upfile/<%=map.get("filename").equals("")?"&nbsp;":map.get("filename") %>"/>
+          <img height="45" width="80" src="/nelecemarket/upfile/"/>
           
          </td>
           
           <td align="center">
           
-          <a href="javascript:update('<%=map.get("id")%>')">修改</a>
+          <a href="javascript:update('')">修改</a>
           <script type="text/javascript">
           
           
@@ -96,16 +65,15 @@
           }
           </script>
           &nbsp;|&nbsp;
-          <a href="/nelecemarket/admin/yqlj.jsp?did=<%=map.get("id")%>">删除</a>
+          <a href="/nelecemarket/admin/yqlj.jsp?did=">删除</a>
           
           
           
           </td>
   </tr>
-        <%} %>
-        
+     
         <tr align="center">
-          <td align="right" colspan="13"><%=bean.getInfo() %></td>
+          <td align="right" colspan="13"></td>
         </tr>
       </table>
       </form>
@@ -122,13 +90,9 @@
 //-->
 </script>
 
-<%
-if(request.getAttribute("suc")!=null)
-{
- %>
+
  <script type="text/javascript">
 <!--
 alert("添加成功")
 //-->
 </script>
-<%}%>

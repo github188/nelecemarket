@@ -1,6 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+
  
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -11,30 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="/nelecemarket/admin/commfiles/css/style.css" /> 
 	
   </head>
-  <%
-  
-  	CommDAO cDAO = new CommDAO();
-    List<HashMap> list = cDAO.select("select * from splb where pid='-1' order by id");
-    cDAO.close();
-    HashMap ext = new HashMap();
-  ext.put("utype","管理员");
-  ext.put("proshop",Info.getUser(request).get("uname").toString());
-  String extbei = "";
-  for(HashMap mmm:list)
-  {
-  extbei+=mmm.get("lbname")+"-"+(request.getParameter(mmm.get("lbname").toString())==null?" ":request.getParameter(mmm.get("lbname").toString()))+"@";
-  }
-  if(extbei.length()>0)extbei=extbei.substring(0,extbei.length()-1);
-  ext.put("extbei",extbei);
-  ext.put("savetime",Info.getDateStr());
-  ext.put("cjnum","0");
-  CommDAO cDAO1 = new CommDAO();
-  cDAO1.insert(request,response,"pros",ext,true,false);
-  cDAO1.close();
-  
-  
-  
-   %>
+ 
   <body>
   <form name="f1" method="post" action="addpros.jsp?f=f"  >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
@@ -49,7 +25,7 @@
       <input name="proname" id="proname"  type="text" size="20"  maxlength="20" /> &nbsp;</span></td>
         <td width="20%" rowspan="4" align="center">
         
-        <%=Info.getImgUpInfo2(95) %>        </td>
+              </td>
       </tr>
         <tr align="center">
           <td align="center"> 价格</td>
@@ -88,29 +64,19 @@
         
         
         
-        <%
-        CommDAO cDAO2 = new CommDAO();
-        for(HashMap mm:list){
-         List<HashMap> slist = cDAO2.select("select * from splb where pid='"+mm.get("id")+"'");
-         %>
+       
          <tr align="center">
-          <td align="center"><%=mm.get("lbname") %></td>
+          <td align="center"></td>
           <td colspan="2" align="left"><span class="style1">
-            <select name="<%=mm.get("lbname") %>" id="<%=mm.get("lbname") %>" >
+            <select name="" id="" >
             
             <option value="">不详</option>
-                            <%
-                      for(HashMap mmm:slist){
-                       %>
-                            <option value="<%=mmm.get("lbname") %>"><%=mmm.get("lbname") %></option>
-                            <%} %>
+                           
             
             </select>
           </span> </td>
         </tr>
-        <%} 
-        cDAO2.close();
-        %>
+       
         
         
         

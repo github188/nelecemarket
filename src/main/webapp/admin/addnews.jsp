@@ -1,6 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+
  
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -22,14 +21,7 @@
  </script>
 	
   </head>
-  <%
-  HashMap ext = new HashMap();
-  ext.put("infotype","新闻");
-  ext.put("savetime",Info.getDateStr());
-  CommDAO cDAO = new CommDAO();
-  cDAO.insert(request,response,"news",ext,true,true);
-  cDAO.close();
-   %>
+
   <body onload="fckinit();">
   <form name="f1" method="post" action="addnews.jsp?f=f"  >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
@@ -48,8 +40,7 @@
        <tr align="center">
           <td width="20%" align="center"> 新闻图片</td>
         <td   align="left"><span class="style1">
-     
-     <%=Info.getImgUpInfo2(70) %>
+    
      
      
      </span></td>

@@ -1,6 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+
  
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -11,13 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="/nelecemarket/admin/commfiles/css/style.css" /> 
 	
   </head>
-  <%
-  HashMap ext = new HashMap();
-  ext.put("utype","管理员");
-  CommDAO cDAO1 = new CommDAO();
-  cDAO1.insert(request,response,"sysuser",ext,true,false);
-  cDAO1.close();
-   %>
+
   <body>
   <form name="f1" method="post" action="addsysusers.jsp?f=f"  >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
@@ -32,7 +25,6 @@
       <input name="uname" id="uname"  type="text" size="20"  maxlength="20" /> &nbsp;</span></td>
         <td width="20%" rowspan="4" align="center">
         
-        <%=Info.getImgUpInfo2(95) %>
         
         </td>
       </tr>

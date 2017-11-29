@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="util.PageManager"%>
-<%@page import="dao.CommDAO"%>
+
  
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -11,12 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="/nelecemarket/admin/commfiles/css/style.css" /> 
 	<script type="text/javascript" src="/nelecemarket/js/popup.js"></script>
   </head>
-  <%
- CommDAO dao = new CommDAO();
-    
-  List<HashMap> nlist = dao.select("select * from splb where pid='-1' order by id desc");
-  
-   %>
+ 
   <body>
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<form name="f1" method="post" action="/nelecemarket/admin/splb.jsp" >
@@ -33,29 +27,17 @@
           <td class="itemtitle"> 小类</td>
         
   </tr>
-        
-         <%
- 
-  for(HashMap map:nlist)
-  {
-    %>
+
         <tr align="center">
-          <td align="center"> <a href="javascript:update('<%=map.get("id") %>')"><%=map.get("lbname").equals("")?"&nbsp;":map.get("lbname") %></a> </td>
+          <td align="center"> <a href="javascript:update('')"></a> </td>
           <td align="center"> 
-          
-          <%
-          
-          for(HashMap m:dao.select("select * from splb where pid='"+map.get("id")+"'")){
-           %>
-          <a href="javascript:update('<%=m.get("id") %>')"><%=m.get("lbname").equals("")?"&nbsp;":m.get("lbname") %></a> 
+          <a href="javascript:update('')"></a> 
           &nbsp;&nbsp;
-          <%} %>
-           <a href="javascript:add('<%=map.get("id") %>')">[点击添加小类]</a>
+           <a href="javascript:add('')">[点击添加小类]</a>
             </td>
           
          
   </tr>
-        <%} %>
         
         <tr align="center">
           <td height="30" colspan="13" align="left">
@@ -69,17 +51,13 @@
       </form>
 </body>
 </html>
-<%
-dao.close();
-if(request.getAttribute("suc")!=null)
-{
- %>
+
  <script type="text/javascript">
 <!--
 alert("添加成功")
 //-->
 </script>
-<%}%>
+
 
  <script type="text/javascript">
           function update(no)

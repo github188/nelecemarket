@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
+
  
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -11,28 +10,14 @@
 	<link rel="stylesheet" type="text/css" href="/nelecemarket/admin/commfiles/css/style.css" /> 
 	
   </head>
-  <%
-  String id = request.getParameter("id")==null?"-1":request.getParameter("id");
-  HashMap ext = new HashMap();
-  CommDAO dao = new CommDAO();
-  dao.update(request,response,"splb",ext,true,true);
-  
-    HashMap map = dao.getmap(id,"splb");
-    
-    if(request.getParameter("did")!=null)
-    {
-    	dao.commOper("delete from splb where id="+request.getParameter("did")+" or pid='"+request.getParameter("did")+"'");
-    %>
+ 
     <script type="text/javascript">
     parent.location=parent.location;
     
     </script>
-    <%
-    }
-    dao.close();
-   %>
+  
   <body>
-  <form name="f1" method="post" action="updatesplb.jsp?f=f&id=<%=id %>"  >
+  <form name="f1" method="post" action="updatesplb.jsp?f=f&id="  >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="mytab" id="table1">
          
@@ -64,7 +49,7 @@
             
             &nbsp;&nbsp;
             
-            <input name="sub" id="upass"  type="button" onclick="f1.action='updatesplb.jsp?id=<%=id %>&did=<%=id%>';f1.submit();" value="删除本类" />
+            <input name="sub" id="upass"  type="button" onclick="f1.action='updatesplb.jsp?id=&did=';f1.submit();" value="删除本类" />
             
             </td>
         </tr>
@@ -76,4 +61,3 @@
 </body>
 </html>
 <script type="text/javascript" src="/nelecemarket/admin/commfiles/js/ajax.js"></script>
-  <%=Info.tform(map)%>

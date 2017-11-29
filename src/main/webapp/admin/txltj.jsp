@@ -1,7 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
- 
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -11,13 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="/nelecemarket/admin/commfiles/css/style.css" /> 
 	
   </head>
-  
-  <% 
-HashMap ext = new HashMap(); 
-CommDAO cDAO = new CommDAO();
-cDAO.insert(request,response,"txl",ext,true,true); 
-cDAO.close();
-%>
 <body>
   <form name="f1" method="post"  action="txltj.jsp?f=f"   >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
@@ -53,8 +44,7 @@ cDAO.close();
         </tr>
 <tr align="center">
           <td width="23%" align="center"> 相片</td>
-          <td width="77%" align="left"> 
-            <%=Info.getImgUpInfo(65)%>           </td>
+          <td width="77%" align="left"> </td>
         </tr>
 
        
@@ -70,4 +60,4 @@ cDAO.close();
 </body>
 </html>
  
-<script language=javanelecemarketsrc='/emarket/js/My97DatePicker/WdatePicker.js'></script><script language=javanelecemarketsrc='/emarket/js/popup.js'></script><%@page import="util.Info"%>
+<script language=javanelecemarketsrc='/emarket/js/My97DatePicker/WdatePicker.js'></script><script language=javanelecemarketsrc='/emarket/js/popup.js'></script>

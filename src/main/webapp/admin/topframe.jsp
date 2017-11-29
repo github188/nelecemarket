@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="util.Info"%>
+
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -24,7 +24,7 @@ function checkout()
 	<div style="height: 28px"></div>
 	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	 <strong>
-	 <font style="font-family: 华文行楷;font-size: 32px" color="#3995FF">Nike球鞋网上销售平台<%=Info.getUser(request).get("utype") %>中心</font>
+	 <font style="font-family: 华文行楷;font-size: 32px" color="#3995FF">Nike球鞋网上销售平台中心</font>
 	 </strong>
 	 </div>
 	 <div class="right_nav">
@@ -33,14 +33,8 @@ function checkout()
 	 <div class="text_left">
 	 
 
-<%
-String admin = "";
-String utype = "";
-HashMap map = Info.getUser(request);
-admin=map.get("uname").toString();
-utype=map.get("utype").toString();
-%>
-	 <a href="javascript:parent.manFrame.location.replace('<%=admin %>')" class="link_a">个人信息</a></div>
+
+	 <a href="javascript:parent.manFrame.location.replace('')" class="link_a">个人信息</a></div>
 	 
 		 <div class="text_right"><a href="javascript:top.location='/nelecemarket/index.jsp?zx=zx'" class="link_a">退出系统</a></div>
 		 

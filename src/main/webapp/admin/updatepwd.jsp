@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
+
  
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -13,18 +12,9 @@
   </head>
   
   <body>
-<%
-  CommDAO dao = new CommDAO();
-  HashMap extmap = new HashMap();
-  extmap.put("upass",request.getParameter("newpwd"));
-  dao.update(request,response,"sysuser",extmap, true,false);
-  String id = Info.getUser(request).get("id").toString();
-  HashMap map = dao.select("select * from sysuser where id="+id).get(0);
-  dao.close();
-  String pwd = map.get("upass").toString();
-   %>
-   <input type="hidden" id="hpwd" name="hpwd" value="<%=pwd %>"  >
-  <form name="f1" method="post" action="updatepwd.jsp?f=f&id=<%=map.get("id").toString() %>" onSubmit="return check();">
+
+   <input type="hidden" id="hpwd" name="hpwd" value=""  >
+  <form name="f1" method="post" action="updatepwd.jsp?f=f&id=" onSubmit="return check();">
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="mytab" id="table1">
         <tr align="center" style="">
@@ -92,13 +82,9 @@ return false;
 }
 //-->
 </script>
-<%
-if(request.getAttribute("suc")!=null)
-{
- %>
+
  <script type="text/javascript">
 <!--
 alert("修改成功");
 //-->
 </script>
-<%}%>

@@ -1,7 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
- 
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -13,12 +11,7 @@
  
 	
   </head>
-  <%
-  HashMap ext = new HashMap();  
-  CommDAO cDAO = new CommDAO();
-  cDAO.insert(request,response,"yqlj",ext,true,true);
-  cDAO.close();
-   %>
+
   <body  >
   <form name="f1" method="post" action="addyqlj.jsp?f=f"  >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
@@ -43,7 +36,7 @@
           <td width="20%" align="center"> 链接图片</td>
         <td   align="left"><span class="style1">
      
-     <%=Info.getImgUpInfo2(70) %>
+   
      
      
      </span></td>

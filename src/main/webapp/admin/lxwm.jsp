@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
+
  
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -22,18 +21,9 @@
  </script>
 	
   </head>
-  <%
-  String id = "3";
  
-  HashMap ext = new HashMap();
-  
-  CommDAO cDAO = new CommDAO(); 
-  cDAO.update(request,response,"news",ext,true,false);
-  HashMap map = cDAO.getmap(id,"news");
-  cDAO.close();
-   %>
   <body onload="fckinit();">
-  <form name="f1" method="post" action="lxwm.jsp?f=f&id=<%=id %>"  >
+  <form name="f1" method="post" action="lxwm.jsp?f=f&id="  >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="mytab" id="table1">
         <tr align="center" style="display: ">
@@ -45,7 +35,7 @@
         <tr align="center">
           
           <td align="left" colspan="2"><span class="style1">
-            <textarea name="content"     ><%=map.get("content") %></textarea>
+            <textarea name="content"     ></textarea>
            
             
           </span> </td>
@@ -64,4 +54,3 @@
 </body>
 </html>
 <script type="text/javascript" src="/nelecemarket/admin/commfiles/js/ajax.js"></script>
- <%=Info.tform(map)%>

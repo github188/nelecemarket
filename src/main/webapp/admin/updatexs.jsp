@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -10,16 +9,9 @@
 	<link rel="stylesheet" type="text/css" href="/nelecemarket/admin/commfiles/css/style.css" /> 
 		<script type="text/javascript" src="/nelecemarket/js/My97DatePicker/WdatePicker.js"></script>
   </head>
-  <%
-CommDAO dao = new CommDAO();
-String id = request.getParameter("id");
-HashMap m = dao.getmap(id,"xiaos");
-  List<HashMap> list = dao.select("select * from shj where shjkh='"+Info.getUser(request).get("uname")+"'");
-dao.update(request,response,"xiaos",new HashMap(),true,true);
-dao.close();
-   %>
+ 
   <body>
-  <form name="f1" method="post" action="updatexs.jsp?f=f&id=<%=id%>"  >
+  <form name="f1" method="post" action="updatexs.jsp?f=f&id="  >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="mytab" id="table1">
         <tr align="center"  style="display: none">
@@ -40,12 +32,9 @@ dao.close();
         <tr align="center">
           <td height="25" align="center">售货机<br></td>
     <td height="25" align="left"><select name="shj" id="shj">
-      <%
-        for(HashMap obj:list)
-        {
-         %>
-      <option value="<%=obj.get("shjname")%>"><%=obj.get("shjname")%></option>
-      <%} %>
+     
+      <option value=""></option>
+     
     </select></td>
       </tr>
          <tr align="center">
@@ -92,20 +81,6 @@ dao.close();
 <script type="text/javascript" src="/nelecemarket/admin/commfiles/js/ajax.js"></script>
 
 <script type="text/javascript"  >
-<%
-if(request.getAttribute("kjnum")!=null)
-{
-%>
-alert("该用户借书数量超出可借数量");
-<%}%>
 
-<%
-if(request.getAttribute("htime")!=null)
-{
-%>
-alert("该用户有逾期未还图书");
-<%}%>
 
 </script>
-
-<%=Info.tform(m)%>

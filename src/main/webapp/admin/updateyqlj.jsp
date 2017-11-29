@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
+
  
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -13,16 +12,9 @@
  
 	
   </head>
-  <%
-  CommDAO dao = new CommDAO();
-  HashMap ext = new HashMap();  
-  String id = request.getParameter("id");
-  HashMap map = dao.getmap(id,"yqlj");
-  dao.update(request,response,"yqlj",ext,true,true);
-  dao.close();
-   %>
+
   <body  >
-  <form name="f1" method="post" action="updateyqlj.jsp?f=f&id=<%=id%>"  >
+  <form name="f1" method="post" action="updateyqlj.jsp?f=f&id="  >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="mytab" id="table1">
         <tr align="center" style="display: none">
@@ -45,7 +37,7 @@
           <td width="20%" align="center"> 链接图片</td>
         <td   align="left"><span class="style1">
      
-     <%=Info.getImgUpInfo2(70) %>
+   
      
      
      </span></td>
@@ -66,4 +58,3 @@
 </body>
 </html>
 <script type="text/javascript" src="/nelecemarket/admin/commfiles/js/ajax.js"></script>
- <%=Info.tform(map)%>

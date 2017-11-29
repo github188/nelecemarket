@@ -1,7 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-session.invalidate();
- %>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -25,9 +24,12 @@ function execute(opt){
 		window.close();
 }
 </script>
+
 <SCRIPT language=javascript src="js/jQuery.js"></SCRIPT>
+
 <SCRIPT language=javascript src="js/login.js"></SCRIPT>
 </head>
+
 <body id="login_bg" onkeydown="sub();">
 <script language="javascript">
 function sub()
@@ -41,11 +43,18 @@ f1.submit();
 <div class="centerDiv">
 <div style="height: 120px"></div>
  <div  align="center">
+ 
+ 
  <strong>     
- <font size="4" style="color:white; font-size: 30px;font-family: 华文行楷"> 平台后台管理登录 </font> 
- </strong>
+ 
+ <font size="4" style="color:white; font-size: 30px;font-family: 华文行楷"> 平台后台管理登录 </font> </strong>
+ 
+ 
+ 
+ 
  </div>
   <form action="/nelecemarket/nelecemarket?ac=login" method="post" name="f1">
+	 
 	 <div id="login-main">
 	   <div style="margin-left:180px; padding-top:12px; width:260px; overflow:hidden">
 		 <table border="0" cellpadding="0" cellspacing="0" class="margin-bottom">
@@ -57,55 +66,64 @@ f1.submit();
 			<td class="font"><b>密&nbsp;&nbsp;&nbsp;码</b></td>
 			<td><input name="upass" type="upass" class="input" value=""></td>
 		  </tr>
+		  
 		   <tr>
-			<td class="font">
-				<b>类&nbsp;&nbsp;&nbsp;别</b>
-			</td>
+			<td class="font"><b>类&nbsp;&nbsp;&nbsp;别</b></td>
 			<td>
-				<label>
-				  <input name="utype" type="radio" id="utype" value="买家" checked="checked" />买家
-				</label>
-				&nbsp; 
-				<label>
-				  <input name="utype" type="radio" id="utype" value="卖家"/>卖家
-				</label>
-				&nbsp; 
-				<label>
-				<input type="radio" name="utype" id="utype" value="管理员" />管理员
-				</label>
-			</td>
+			<label>
+			  <input name="utype" type="radio" id="utype" value="买家" checked="checked" />
+			买家</label>
+			
+			&nbsp; 
+			
+			<label>
+			  <input name="utype" type="radio" id="utype" value="卖家"   />
+			卖家</label>
+			
+			&nbsp; 
+			<label>
+			<input type="radio" name="utype" id="utype" value="管理员" />
+			
+			管理员
+			</label></td>
 		   </tr>
 		</table>
+		<div class="login-cont"  >
+		<div class="right dl_bt1" style="width: 73%" align="right"><input name="" type="button"  value=" 登 录 " onclick="f1.submit();" ></div>
+		 
+		
 		</div>
+		
+		</div>
+		
+		
+		
 	 </div>
 	   <div align="center" style="color: white"> 
-	   <br />技术支持&nbsp;:&nbsp;&nbsp;Nike球鞋网上销售平台系统项目组 <br /><br />
-	        版权归本项目组所有
+	   <br />
+	   技术支持&nbsp;:&nbsp;&nbsp;Nike球鞋网上销售平台系统项目组 
+	   <br />
+	   <br />
+	   版权归本项目组所有
+	   
 	   </div>
-		<div class="login-cont"  >
-			<div class="right dl_bt1" style="width: 73%" align="right">
-			<input name="" type="button"  value=" 登 录 " onclick="f1.submit();" >
-			</div>
-		</div>
 	 </form>
 </div>
 
-<div class="hiddenDiv">
-</div>
+<div class="hiddenDiv"></div>
 </body>
 </html>
-<%
-if(request.getAttribute("error")!=null)
-{
- %>
+
  <script type="text/javascript">
+<!--
 alert("用户名或密码错误");
+//-->
 </script>
-<%}%>
+
 
 <script type="text/javascript">
-
+<!--
 document.getElementById("uname").focus();
 f1.uname.focus();
-
+//-->
 </script>

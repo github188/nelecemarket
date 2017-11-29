@@ -1,7 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="util.PageManager"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
+
  
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -12,57 +10,6 @@
 	<link rel="stylesheet" type="text/css" href="/nelecemarket/admin/commfiles/css/style.css" /> 
 	<script type="text/javascript" src="/nelecemarket/js/popup.js"></script>
   </head>
-  <%
- CommDAO dao = new CommDAO();
-   String key = request.getParameter("key")==null?"":request.getParameter("key");
-  String truename = request.getParameter("truename")==null?"":request.getParameter("truename");
-  
-  
-  String jsid = request.getParameter("jsid")==null?"":request.getParameter("jsid");
-  
-  if(!jsid.equals(""))
-  {
-  dao.commOper("update prosorder set status='订单已接受并已发货' where id="+jsid);
-  }
-  
-  
-  String jjid = request.getParameter("jjid")==null?"":request.getParameter("jjid");
-  
-  if(!jjid.equals(""))
-  {
-  dao.commOper("update prosorder set status='订单已被拒绝' where id="+jjid);
-  }
-  
-  String tkid = request.getParameter("tkid")==null?"":request.getParameter("tkid");
-  
-  if(!tkid.equals(""))
-  {
-  dao.commOper("update prosorder set fkstatus='已退款' where id="+tkid);
-  }
-  
-  String did = request.getParameter("did")==null?"":request.getParameter("did");
-  
-  if(!did.equals(""))
-  {
-  dao.commOper("delete from sysuser where id="+did);
-  }
-  dao.close();
-  String url = "orderssls.jsp?1=1";
-  String sql = "select * from prosorder  where  toshop='"+Info.getUser(request).get("uname")+"' and  ( status='订单已被拒绝' or status='已确认收货'  ) ";
-  
-  if(!key.equals(""))
-  {
-  url+="&key="+key;
-  sql+=" and (toshop like '%"+key+"%' or prosinfo like '%"+key+"%' ) ";
-  }
- 
-  sql+=" order by id desc";
-  System.out.println(sql);
-  PageManager pageManager = PageManager.getPage(url, 5, request);
-  pageManager.doList(sql);
-  PageManager bean = (PageManager) request.getAttribute("page");
-  ArrayList<HashMap> nlist = (ArrayList) bean.getCollection();
-   %>
   <body>
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<form name="f1" method="post" action="/nelecemarket/admin/orderssls.jsp" >
@@ -70,7 +17,7 @@
 					class="tableform">
 			<tr>
      				 <td width=10% height="31" align="center" style="font-size: 12px">相关信息&nbsp;:</td>
-	    <td width=14% style="font-size: 12px" align="left"><input name="key"  size="30" value="<%=key %>" type="text"></td>
+	    <td width=14% style="font-size: 12px" align="left"><input name="key"  size="30" value="" type="text"></td>
 					 
 					<td width=46% style="font-size: 12px" align="left">&nbsp;</td>
 					<td width=20% style="font-size: 12px" align="right"><input type="submit" class="btn3_mouseup" value="查询">&nbsp;&nbsp;</td>
@@ -93,51 +40,29 @@
         
   </tr>
         
-         <%
- 
-  for(HashMap map:nlist)
-  {
-  String proinfo = "";
-  int total=0;
-  for(String str:map.get("prosinfo").toString().split(","))
-  {
-  proinfo+=str.split("-")[0]+"&nbsp;&nbsp;单价"+str.split("-")[1]+"&nbsp;&nbsp;"+(str.split("-")[2].equals("")?"不打折":str.split("-")[2]+"折&nbsp;&nbsp;")+"&nbsp;数量 "+str.split("-")[4]+"&nbsp;&nbsp;"+"<br />";
-  
-  int ft = 0;
-  ft=Integer.parseInt(str.split("-")[1])*Integer.parseInt(str.split("-")[4]);
-  if(!str.split("-")[2].equals(""))
-  {
-  ft = (Integer.parseInt(str.split("-")[2])*ft)/10;
-  }
-   total+=ft;
-  }
-    %>
+      
         <tr align="center">
-          <td align="center"> <%=map.get("uname").equals("")?"&nbsp;":map.get("uname") %> </td>
-          <td align="center"> <%=proinfo %>  </td>
-          <td align="center">  <%=total %> </td>
-          <td align="center">  <%=map.get("savetime").equals("")?"&nbsp;":map.get("savetime") %> </td>
-          <td align="center"> <%=map.get("fkstatus").equals("")?"&nbsp;":map.get("fkstatus") %> </td>
-          <td align="center"> <%=map.get("status").equals("")?"&nbsp;":map.get("status") %> </td>
+          <td align="center"></td>
+          <td align="center"></td>
+          <td align="center"> </td>
+          <td align="center"> </td>
+          <td align="center"></td>
+          <td align="center"></td>
          
            
   </tr>
-        <%} %>
+       
         
         <tr align="center">
-          <td align="right" colspan="13"><%=bean.getInfo() %></td>
+          <td align="right" colspan="13"></td>
         </tr>
       </table>
       </form>
 </body>
 </html>
-<%
-if(request.getAttribute("suc")!=null)
-{
- %>
+
  <script type="text/javascript">
 <!--
 alert("添加成功")
 //-->
 </script>
-<%}%>

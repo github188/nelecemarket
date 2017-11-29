@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
+
  
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -12,16 +11,9 @@
 	
   </head>
   
-  <% 
-String id = request.getParameter("id"); 
-CommDAO cDAO = new CommDAO();
-HashMap mmm = cDAO.getmap(id,"txl"); 
-HashMap ext = new HashMap(); 
-cDAO.update(request,response,"txl",ext,true,true); 
-cDAO.close();
-%>
+ 
 <body>
-  <form name="f1" method="post"  action="txlxg.jsp?f=f&id=<%=mmm.get("id")%>"   >
+  <form name="f1" method="post"  action="txlxg.jsp?f=f&id="   >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="mytab" id="table1">
         <tr align="center" style="display: ">
@@ -55,8 +47,7 @@ cDAO.close();
         </tr>
 <tr align="center">
           <td width="23%" align="center"> 相片</td>
-          <td width="77%" align="left"> 
-            <%=Info.getImgUpInfo(65)%>           </td>
+          <td width="77%" align="left"></td>
         </tr>
 
        
@@ -72,4 +63,4 @@ cDAO.close();
 </body>
 </html>
  
-<script language=janelecemarkett src='/emarket/js/My97DatePicker/WdatePicker.js'></script><script language=janelecemarkett src='/emarket/js/popup.js'></script><%@page import="util.Info"%><%=Info.tform(mmm)%>
+<script language=janelecemarkett src='/emarket/js/My97DatePicker/WdatePicker.js'></script><script language=janelecemarkett src='/emarket/js/popup.js'></script>

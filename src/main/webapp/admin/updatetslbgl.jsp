@@ -1,7 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
- 
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -11,17 +9,9 @@
 	<link rel="stylesheet" type="text/css" href="/nelecemarket/admin/commfiles/css/style.css" /> 
 	
   </head>
-  <%
-  CommDAO dao = new CommDAO();
-  String id = request.getParameter("id"); 
-  HashMap ext = new HashMap();
-  dao.update(request,response,"shj",ext,true,true);
-  
-  HashMap map = dao.getmap(id,"splb");
-  
-   %>
+
   <body>
-  <form name="f1" method="post" action="updatetslbgl.jsp?f=f&id=<%=id%>"  >
+  <form name="f1" method="post" action="updatetslbgl.jsp?f=f&id="  >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="mytab" id="table1">
         <tr align="center" style="display: none">
@@ -43,13 +33,9 @@
           <td align="center"> 所属客户</td>
           <td align="left"><span class="style1">
             <select name="shjkh" id="shjkh"    >
-            <%
-            for(HashMap mmm:dao.select("select * from sysuser where utype='客户'")){
-             %>
-             <option value="<%=mmm.get("uname") %>"><%=mmm.get("uname") %></option>
-             <%} 
-             dao.close();
-             %>
+             <option value=""></option>
+            
+           
             </select>
             
           </span> </td>
@@ -68,4 +54,3 @@
 </body>
 </html>
 <script type="text/javascript" src="/nelecemarket/admin/commfiles/js/ajax.js"></script>
- <%=Info.tform(map)%>

@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -12,14 +11,7 @@
   </head>
   
   <body>
-  <%
-  CommDAO dao = new CommDAO();
-  dao.update(request,response,"sysuser",new HashMap(), true,false);
-  String id = Info.getUser(request).get("id").toString();
-  HashMap map = dao.select("select * from sysuser where id="+id).get(0);
-  dao.close();
-   %>
-  <form name="f1" method="post" action="/nelecemarket/admin/pupdatesysusers.jsp?f=f&id=<%=id %>"  >
+  <form name="f1" method="post" action="/nelecemarket/admin/pupdatesysusers.jsp?f=f&id="  >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="mytab" id="table1">
         <tr align="center" >
@@ -31,9 +23,6 @@
         <td width="62%" align="left"><span class="style1">
       <input name="uname" id="uname"  type="text" size="20" disabled="disabled"  maxlength="20" /> &nbsp;</span></td>
         <td width="19%" rowspan="4" align="center">
-        
-        <%=Info.getImgUpInfo2(95) %>
-        
         </td>
       </tr>
         <tr align="center">
@@ -44,11 +33,11 @@
         </tr>
         <tr align="center">
           <td align="center"> 
-        <%if(Info.getUser(request).get("utype").equals("卖家")){ %>
+        
           店名
-          <%}else{ %>
+         
           姓名
-          <%} %>
+       
           </td>
           <td align="left"><span class="style1">
             <input name="tname" id="tname"  type="text" size="20" maxlength="20"  />
@@ -130,15 +119,9 @@ return;
 }
 //-->
 </script>
-<%
-if(request.getAttribute("suc")!=null)
-{
- %>
+
  <script type="text/javascript">
 <!--
 alert("修改成功");
 //-->
 </script>
-<%}%>
-
-<%=Info.tform(map)%>

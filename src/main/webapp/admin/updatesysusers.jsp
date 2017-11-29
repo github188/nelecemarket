@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -12,15 +11,8 @@
   </head>
   
   <body>
-  <%
-  CommDAO dao = new CommDAO();
-  dao.update(request,response,"sysuser",new HashMap(),true,true);
-  String id = request.getParameter("id");
-  if(id==null)id = (String)request.getAttribute("id");
-  HashMap map = dao.getmap(id,"sysuser");
-  dao.close();
-   %>
-  <form name="f1" method="post" action="updatesysusers.jsp?f=f&id=<%=id %>"  >
+ 
+  <form name="f1" method="post" action="updatesysusers.jsp?f=f&id="  >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="mytab" id="table1">
         <tr align="center" style="display:none">
@@ -33,8 +25,7 @@
       <input name="uname" id="uname"  type="text" size="20" disabled="disabled"  maxlength="20" /> &nbsp;</span></td>
         <td width="31%" rowspan="4" align="center">
         
-        <%=Info.getImgUpInfo2(95) %>
-        
+       
         </td>
       </tr>
         <tr align="center">
@@ -120,16 +111,10 @@ return;
 }
 //-->
 </script>
-<%
-if(request.getAttribute("suc")!=null)
-{
- %>
+
  <script type="text/javascript">
 <!--
 alert("修改成功");
 parent.location=parent.location;
 //-->
 </script>
-<%}%>
-
-<%=Info.tform(map) %>

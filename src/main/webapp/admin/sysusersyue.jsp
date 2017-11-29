@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -12,15 +11,8 @@
   </head>
   
   <body>
-  <%
-  CommDAO dao = new CommDAO();
-  String id = Info.getUser(request).get("id").toString();
-
-  
-  HashMap map = dao.select("select * from sysuser where id="+id).get(0);
-  dao.close();
-   %>
-  <form name="f1" method="post" action="/nelecemarket/nelecemarket?ac=chongzhi&id=<%=id %>"  >
+ 
+  <form name="f1" method="post" action="/nelecemarket/nelecemarket?ac=chongzhi&id="  >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="mytab" id="table1">
         <tr align="center" >
@@ -36,7 +28,7 @@
         <tr align="center">
           <td height="30" colspan="3" align="center">
             <label>
-              <input type="hidden" name="yuanyue" value="<%=map.get("yue") %>">
+              <input type="hidden" name="yuanyue" value="">
               <input type="submit" name="button" id="button" value="提交">
             </label> &nbsp;&nbsp;
             <input  type="reset" name="button2" id="button2" value="重置">                   </td>
@@ -61,13 +53,10 @@ return;
 }
 //-->
 </script>
-<%
-if(request.getAttribute("suc")!=null)
-{
- %>
+
  <script type="text/javascript">
 <!--
 alert("充值成功");
 //-->
 </script>
-<%}%>
+

@@ -1,6 +1,5 @@
-<%@page import="org.omg.CORBA.COMM_FAILURE"%>
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
+﻿<%@page import="org.omg.CORBA.COMM_FAILURE"%>
+
  
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -11,12 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="/nelecemarket/admin/commfiles/css/style.css" /> 
 	
   </head>
-  <%
-  HashMap ext = new HashMap();
-  CommDAO cDAO1 = new CommDAO();
-  cDAO1.insert(request,response,"shj",ext,true,true);
-  cDAO1.close();
-   %>
+
   <body>
   <form name="f1" method="post" action="addtslbgl.jsp?f=f"  >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
@@ -40,14 +34,7 @@
           <td align="center"> 所属客户</td>
           <td align="left"><span class="style1">
             <select name="shjkh" id="shjkh"    >
-            <%
-            CommDAO cDAO2 = new CommDAO();
-            for(HashMap mmm:cDAO2.select("select * from sysuser where utype='客户'")){
-             %>
-             <option value="<%=mmm.get("uname") %>"><%=mmm.get("uname") %></option>
-             <%} 
-             	cDAO2.close();
-             %>
+        
             </select>
             
           </span> </td>

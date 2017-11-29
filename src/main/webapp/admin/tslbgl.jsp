@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.PageManager"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -10,31 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="/nelecemarket/admin/commfiles/css/style.css" /> 
 	<script type="text/javascript" src="/nelecemarket/js/popup.js"></script>
   </head>
-  <%
-  CommDAO dao = new CommDAO();
-   String key = request.getParameter("key")==null?"":request.getParameter("key");
-  String did = request.getParameter("did")==null?"":request.getParameter("did");
-  
-  if(!did.equals(""))
-  {
-  dao.commOper("delete from shj where id="+did);
-  }
-  dao.close();
-  String url = "tslbgl.jsp?1=1";
-  String sql = "select * from shj  where 1=1 ";
-  
-  if(!key.equals(""))
-  {
-  sql+=" and shjname like '%"+key+"%' ";
-  }
-  
-  sql+=" order by id desc";
-  System.out.println(sql);
-  PageManager pageManager = PageManager.getPage(url, 100, request);
-  pageManager.doList(sql);
-  PageManager bean = (PageManager) request.getAttribute("page");
-  ArrayList<HashMap> nlist = (ArrayList) bean.getCollection();
-   %>
+ 
   <body>
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<form name="f1" method="post" action="/nelecemarket/admin/tslbgl.jsp" >
@@ -43,7 +18,7 @@
 			<tr>
      				 <td height="31" align="left" style="font-size: 12px">  
                      &nbsp;&nbsp;相关信息&nbsp; :&nbsp; 
-   				       <input name="key" type="text" value="<%=key %>" size="35"> &nbsp;
+   				       <input name="key" type="text" value="" size="35"> &nbsp;
    				     <input type="submit" class="btn3_mouseup" value="查询"> &nbsp;
    				     <input type="button" onclick="add();" class="btn3_mouseup" value="添加">                     </td>
 	    </tr>
@@ -62,26 +37,20 @@
           <td class="itemtitle" width="" > 操作</td>
           
   </tr>
-        
-       <%
-        int i=0;
-  for(HashMap data:nlist)
-  {
-  i++;
-    %>
+
         <tr align="center">
         
-     <td align="center"> <%=data.get("shjname").equals("")?"&nbsp;":data.get("shjname") %> </td>
-     <td align="center"> <%=data.get("shjtm").equals("")?"&nbsp;":data.get("shjtm") %> </td>
-          <td align="center"> <%=data.get("shjkh").equals("")?"&nbsp;":data.get("shjkh") %> </td>
+     <td align="center"></td>
+     <td align="center"></td>
+          <td align="center"></td>
           <td align="center"> 
-          <a href="javascript:update('<%=data.get("id")%>')">修改</a>
+          <a href="javascript:update('')">修改</a>
           &nbsp;|&nbsp;
-          <a href="/nelecemarket/admin/tslbgl.jsp?did=<%=data.get("id")%>">删除</a> </td>
+          <a href="/nelecemarket/admin/tslbgl.jsp?did=">删除</a> </td>
           
   </tr>
         
-        <%} %>
+     
         
         
         <tr align="center">
