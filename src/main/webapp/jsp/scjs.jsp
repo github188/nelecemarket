@@ -1,7 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
-<%@page import="util.PageManager"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0041)http://www.xingguangerwai01.com/index.jsp -->
@@ -10,12 +8,7 @@
 
 <LINK rel=stylesheet 
 type=text/css href="/nelecemarket/nelecemarket_files/css.css">
-<%
-String id = request.getParameter("id");
-CommDAO cDAO = new CommDAO();
-HashMap map = cDAO.getmap("15","news");
-cDAO.close();
- %>
+
 <META name=GENERATOR content="MSHTML 8.00.6001.19258"></HEAD>
 <BODY>
  
@@ -77,11 +70,7 @@ cDAO.close();
                              
                                 <TD vAlign=center width="" align=left>
                                 
-                                
-                                <%=map.get("content") %>
-                                
-                                
-                                
+                          
                                  </TD>
                               </TR>
                              

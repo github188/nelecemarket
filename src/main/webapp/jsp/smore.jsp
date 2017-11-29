@@ -1,7 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
-<%@page import="util.PageManager"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0041)http://www.xingguangerwai01.com/index.jsp -->
@@ -42,16 +40,7 @@ type=text/css href="/nelecemarket/nelecemarket_files/css.css">
                   <TD vAlign=top><TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
                     <TBODY>
                       <TR>
-                        <%
-                     PageManager pageManager = PageManager.getPage("smore.jsp?1=1", 9, request);
-					  pageManager.doList("select * from sysuser where utype='卖家' order by id desc");
-					  PageManager bean = (PageManager) request.getAttribute("page");
-					  ArrayList<HashMap> nlist = (ArrayList) bean.getCollection();
-                    int jj=0;
-                    for(HashMap m:nlist)
-                    {
-                    jj++;
-                     %>
+                       
                         <TD vAlign=top width=33%><TABLE border=0 cellSpacing=0 cellPadding=0 
 width="100%">
                           <TBODY>
@@ -71,7 +60,7 @@ width="100%">
                                                 <TD height=24 colspan="2" 
                                 align=left vAlign=center bgColor=#f7f7f7><DIV align=center style=" color:orange"><strong>
                                 
-                                <a href="sindex.jsp?id=<%=m.get("id") %>"><%=m.get("tname") %></a>
+                                <a href="sindex.jsp?id="></a>
                                 
                                 
                                 </strong></DIV>
@@ -79,18 +68,18 @@ width="100%">
                                               </TR>
                                               <TR>
                                                 <TD 
-                                width="33%" rowspan="3" align=center vAlign=center bgColor=#ffffff><img src="upfile/<%=m.get("filename") %>" width="93" height="93" /> </TD>
+                                width="33%" rowspan="3" align=center vAlign=center bgColor=#ffffff><img src="upfile/" width="93" height="93" /> </TD>
                                                 <TD width="67%" height="26" 
-                                align=left vAlign=center bgColor=#ffffff>&nbsp;店主 : <%=m.get("uname") %> </TD>
+                                align=left vAlign=center bgColor=#ffffff>&nbsp;店主 : </TD>
                                               </TR>
                                               <TR>
                                                 <TD width="67%" height="52" style="padding:2px" 
-                                align=left vAlign=top bgColor=#ffffff>&nbsp; <%=Info.subStr(m.get("bei").toString(),52)  %>&nbsp;</TD>
+                                align=left vAlign=top bgColor=#ffffff>&nbsp; &nbsp;</TD>
                                               </TR>
                                               
                                               <TR>
                                                 <TD width="67%" height="26" 
-                                align=left vAlign=center bgColor=#ffffff>&nbsp;加盟时间 : <%=m.get("savetime") %></TD>
+                                align=left vAlign=center bgColor=#ffffff>&nbsp;加盟时间 :</TD>
                                               </TR>
                                             </TBODY>
                                           </TABLE></TD>
@@ -103,19 +92,15 @@ width="100%">
                             </TR>
                           </TBODY>
                         </TABLE></TD>
-                        <%
-                      if(jj%3!=0){
-                       %>
+                     
                         <TD width=10></TD>
-                        <%}else{ %>
+                       
                       </tr>
                       <tr>
                         <td height="3"></td>
                       </tr>
                       <tr>
-                        <%} %>
-                        <%} %>
-                        
+                       
                         
                         
                       </TR>

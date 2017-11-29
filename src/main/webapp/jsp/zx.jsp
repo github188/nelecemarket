@@ -9,9 +9,6 @@
   </head>
   
   <body>
-    <%
-    session.invalidate();
-    request.getRequestDispatcher("index.jsp").forward(request,response);
-     %>
+ 
   </body>
 </html>

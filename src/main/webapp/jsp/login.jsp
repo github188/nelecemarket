@@ -1,7 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
-<%@page import="util.PageManager"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0041)http://www.xingguangerwai01.com/index.jsp -->
@@ -152,10 +150,6 @@ type=text/css href="/nelecemarket/nelecemarket_files/css.css">
 </BODY></HTML>
 <script type="text/javascript">
 <!--
-<%
-if(request.getAttribute("error")!=null){
-%>
-alert("用户名或密码错误");
-<%}%>
+
 //-->
 </script>

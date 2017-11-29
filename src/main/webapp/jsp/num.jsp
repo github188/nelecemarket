@@ -1,7 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
-<%@page import="util.PageManager"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0041)http://www.xingguangerwai01.com/index.jsp -->
@@ -14,19 +12,9 @@ type=text/css href="/nelecemarket/nelecemarket_files/css.css">
 <META name=GENERATOR content="MSHTML 8.00.6001.19258"></HEAD>
 <BODY>
 
-<%
-String num = request.getParameter("num");
-String id = request.getParameter("id");
- 
-HashMap ext = new HashMap();
-ext.put("uname",Info.getUser(request).get("uname"));
-ext.put("pid",id);
-CommDAO cDAO = new CommDAO();
-cDAO.insert(request,response,"proscar",ext,true,true);
-cDAO.close();
- %>
 
-   <form name="f1" method="post" action="num.jsp?f=f&id=<%=id %>">
+
+   <form name="f1" method="post" action="num.jsp?f=f&id=">
  <TABLE width="34%" height="78" border=0 align="center" cellPadding=0 cellSpacing=0>
 <TBODY>
                       

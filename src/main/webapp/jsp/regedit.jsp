@@ -1,7 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
-<%@page import="util.PageManager"%>
+"%>
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0041)http://www.xingguangerwai01.com/index.jsp -->
@@ -10,26 +8,11 @@
 
 <LINK rel=stylesheet 
 type=text/css href="/nelecemarket/nelecemarket_files/css.css">
-<%
-String id = request.getParameter("id");
-CommDAO cDAO1 = new CommDAO();
-HashMap map = cDAO1.getmap("3","news");
- %>
- 
- <%
- if(cDAO1.select("select * from sysuser where uname='"+request.getParameter("uname")+"'").size()==0)
- {
-  HashMap ext = new HashMap();
-  ext.put("savetime",Info.getDateStr());
-  cDAO1.insert(request,response,"sysuser",ext,true,false);
-  }else{
-   %>
+
    <script type="text/javascript">
    alert("用户名已存在");
    </script>
-   <%} 
- cDAO1.close();
-   %>
+
  
 <META name=GENERATOR content="MSHTML 8.00.6001.19258"></HEAD>
 <BODY>
@@ -111,7 +94,7 @@ HashMap map = cDAO1.getmap("3","news");
                                   
                                   
                                   </TD>
-                                <TD width="296" rowspan="8" align=center vAlign=center><%=Info.getImgUpInfo(95) %></TD>
+                                <TD width="296" rowspan="8" align=center vAlign=center></TD>
                                 </TR>
                                 
                                 

@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0041)http://www.xingguangerwai01.com/index.jsp -->
@@ -78,42 +78,20 @@ width="100%">
                                
                                
                                
-                               
-                               <%
-                               CommDAO cDAO1 = new CommDAO();
-                               List<HashMap> list = cDAO1.select("select * from yqlj order by id desc");
-                               cDAO1.close();
-                               for(HashMap m:list){
-                                %>
+                             
                                
                                 <TD  height="40">
-                                <A href="<%=m.get("ljurl") %>" target=_blank>
-                                <IMG title="" border=0 src="upfile/<%=m.get("filename") %>"  width=103 height=39></A>
+                                <A href="" target=_blank>
+                                <IMG title="" border=0 src="upfile/"  width=103 height=39></A>
                                 </TD>
                                 
-                                   <%} 
-                                   	
-                                   %>
                                 
+                                   	
+                           
                                 </TR>
                                 <TR align="center">
-                                
-                                <%
-                              for(HashMap m:list){
-                                %>
-                                  <TD height="28" valign="middle"><%=m.get("ljname") %></TD>
-                               
-                                    <%} %>
-                                  
-                                  
-                                  
-                                  
-                                  
-                                  
-                                  
-                                  
-                                  
-                                  
+                            
+                                  <TD height="28" valign="middle"></TD> 
                                 </TR>
                                 </TBODY></TABLE></TD></TR>
                                 <TR>

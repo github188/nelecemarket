@@ -1,7 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
-<%@page import="util.PageManager"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0041)http://www.xingguangerwai01.com/index.jsp -->
@@ -57,72 +55,6 @@ type=text/css href="/nelecemarket/nelecemarket_files/css.css">
                   <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
                     <TBODY>
                     <TR>  
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <%
-                    HashMap nummap = new HashMap();
-                    HashSet set = new HashSet();
-                    String ids="";
-                    CommDAO cDAO = new CommDAO();
-                    for(HashMap m:cDAO.select("select * from prosorder where status='已确认收货'"))
-                    {
-                      for(String str:m.get("prosinfo").toString().split(","))
-                      {
-                      ids+=str.split("-")[3]+",";
-                       }
-                    }
-                    cDAO.close();
-                    if(ids.length()>0)ids=ids.substring(0,ids.length()-1);
-                    
-                    
-                    String sql = "select * from pros where cjnum!=0  ";
-                    
-                    String[] nustrs = {""};
-                        String[] keys = request.getParameterValues("key")==null?nustrs:request.getParameterValues("key");
-                    String key = "";
-                    for(String str:keys)
-                    {
-                    if(str==null)str="";
-                    if(str.equals(""))continue;
-                    key+=str+"-";
-                    }
-                    
-                    if(key.length()>0)key=key.substring(0,key.length()-1);
-                    
-                    if(key.length()>0)
-                    {
-                    sql+=" and ( 1=1 ";
-                    for(String str:key.split("-"))
-                    {
-                    sql+=" and (extbei like'%"+str+"%' or proname like '%"+str+"%' ) ";
-                    }
-                    sql+=" ) ";
-                    }
-                    sql+=" order by cjnum desc";
-                    
-                   System.out.print(sql);
-                    
-                     PageManager pageManager = PageManager.getPage("xsph.jsp?1=1", 9, request);
-					  pageManager.doList(sql);
-					  PageManager bean = (PageManager) request.getAttribute("page");
-					  ArrayList<HashMap> nlist = (ArrayList) bean.getCollection();
-                    int j=0;
-                    for(HashMap m:nlist)
-                    {
-                    j++;
-                     %>
                       <TD vAlign=top width=33%>
                         <TABLE border=0 cellSpacing=0 cellPadding=0 
 width="100%">
@@ -147,14 +79,14 @@ width="100%">
                                 <TD height=24 colspan="2" 
                                 align=left vAlign=center bgColor=#f7f7f7>
                                 <DIV align=center style=" color:orange"><strong>
-								<a href="pxiang.jsp?id=<%=m.get("id") %>" >
-								<%=m.get("proname") %>
+								<a href="pxiang.jsp?id=" >
+							
                                 </a>
                                 
                                  
                                 </strong>
                                 
-                                (成交量 : <%=m.get("cjnum") %>)
+                                (成交量 : )
                                 
                                 </DIV>
                                 <DIV align=center></DIV></TD>
@@ -163,47 +95,32 @@ width="100%">
                                 <TD 
                                 width="33%" rowspan="4" align=center vAlign=center bgColor=#ffffff>
                                 
-                                <img src="upfile/<%=m.get("filename") %>" width="93" height="93" />                                </TD>
+                                <img src="upfile/" width="93" height="93" />                                </TD>
                                 <TD width="67%" height="26" 
-                                align=left vAlign=center bgColor=#ffffff>&nbsp;价格 : <%=m.get("price") %></TD>
+                                align=left vAlign=center bgColor=#ffffff>&nbsp;价格 :</TD>
                                 </TR>
                                 <TR>
                                 <TD width="67%" height="26" 
-                                align=left vAlign=center bgColor=#ffffff>&nbsp;折扣 : <%=m.get("discount").equals("")?"不打折":(m.get("discount")+" 折" )%></TD>
+                                align=left vAlign=center bgColor=#ffffff>&nbsp;折扣 :</TD>
                                 </TR>
                                 <TR>
                                 <TD width="67%" height="26" 
-                                align=left vAlign=center bgColor=#ffffff>&nbsp;所属商铺 : <%=m.get("proshop") %></TD>
+                                align=left vAlign=center bgColor=#ffffff>&nbsp;所属商铺 :</TD>
                                 </TR>
                                 <TR>
                                 <TD width="67%" height="26" 
-                                align=left vAlign=center bgColor=#ffffff>&nbsp;上架时间 : <%=m.get("savetime") %></TD>
+                                align=left vAlign=center bgColor=#ffffff>&nbsp;上架时间 :</TD>
                                 </TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
                       
-                      <%
-                      if(j%3!=0){
-                       %>
+                    
                       <TD width=10></TD>
-                      <%}else{ %>
+                
                       
                       </tr>
                       
                       <tr><td height="3"></td></tr>
                       
                       <tr>
-                      
-                      <%} %>
-                      
-                       <%} %>
-                      
-                      
-                      
-                       
-                      
-                      
-                      
-                      
-                      
                       
                       </TR>
                       

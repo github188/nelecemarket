@@ -1,8 +1,6 @@
-<%@page import="org.omg.CORBA.COMM_FAILURE"%>
+
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
-<%@page import="util.PageManager"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0041)http://www.xingguangerwai01.com/index.jsp -->
@@ -10,16 +8,7 @@
 <META content="text/html; charset=utf-8" http-equiv=Content-Type>
 
 
-<%
- if(Info.getUser(request)!=null){
-HashMap ext = new HashMap();
-ext.put("savetime",Info.getDateStr());
-ext.put("saver",Info.getUser(request).get("uname"));
-CommDAO cDAO1 = new CommDAO();
-cDAO1.insert(request,response,"messages",ext,true,false);
-cDAO.close();
-}
- %>
+
 
 
 
@@ -65,61 +54,8 @@ type=text/css href="/nelecemarket/nelecemarket_files/css.css">
               <TR>
                 <TD vAlign=top>
                   <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                      
-                    <%
-                    
-                    String sql = "select * from messages where 1=1  ";
-                    
-                    sql+="order by id desc";
-                    
-                     PageManager pageManager = PageManager.getPage("messages.jsp?1=1", 5, request);
-					  pageManager.doList(sql);
-					  PageManager bean = (PageManager) request.getAttribute("page");
-					  ArrayList<HashMap> nlist = (ArrayList) bean.getCollection();
-                    int j=0;
-                    CommDAO cDAO2 = new CommDAO();
-                    for(HashMap mmm:nlist)
-                    {
-                    HashMap umap = cDAO2.select("select * from sysuser where uname='"+mmm.get("saver")+"'").get(0);
-                     %>
                     <TBODY>
-                    <TR>  
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                    <TR> 
                       <TD vAlign=top width= >
                         <TABLE border=0 cellSpacing=0 cellPadding=0 
 width="100%">
@@ -145,24 +81,20 @@ width="100%">
                                 <TD 
                                 width="11%" rowspan="3" align=center vAlign=center bgColor=#ffffff>
                                 
-                                <img src="upfile/<%=umap.get("filename") %>"   height="70" />                                </TD>
+                                <img src="upfile/"   height="70" />                                </TD>
                                 <TD width="89%" height="26" 
-                                align=left vAlign=center bgColor=#ffffff>&nbsp;<%=mmm.get("saver") %> ( <%=mmm.get("savetime") %> ) : </TD>
+                                align=left vAlign=center bgColor=#ffffff>&nbsp; (  ) : </TD>
                                 </TR>
                                 <TR>
                                 <TD height="26" 
-                                align=left vAlign=center bgColor=#ffffff> &nbsp;<%=mmm.get("content") %></TD>
+                                align=left vAlign=center bgColor=#ffffff> &nbsp;</TD>
                                 </TR>
                                 <TR>
                                 <TD 
                                 align=left vAlign=center bgColor=#ffffff>&nbsp;
-                                <%
-                                if(mmm.get("recontent").equals("")){
-                                 %>
-                                暂无回复信息
-                                <%}else{ %>
-                                <font color=orange>管理员回复 : <%=mmm.get("recontent") %></font>
-                                <%} %>                                </TD>
+                              
+                                <font color=orange>管理员回复 : </font>
+                                </TD>
                                 </TR>
                                 </TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
                       </TR>
@@ -173,11 +105,7 @@ width="100%">
                       <td align="center" colspan="6" height="5" valign="middle"></td>
                       </tr>
                       </TBODY>
-                    
-                    <%}
-                    cDAO2.close();
-                    %>
-                    
+         
                     
                      <tr>
                       <td align="center" colspan="6" height="3" valign="middle">${page.info }</td>
@@ -189,9 +117,7 @@ width="100%">
                     
                     
                     
-                    <%
-                    if(Info.getUser(request)!=null){
-                     %>
+                 
                       <tr>
                       <td align="center" colspan="6" height="35" valign="middle">
                       <form name="f1" method="post" action="messages.jsp?f=f">
@@ -202,7 +128,7 @@ width="100%">
                         <input name=""  type="submit" value="提交留言" />
                        </form>  </td>
                       </tr>
-                      <%} %>
+
                       
                       
                       

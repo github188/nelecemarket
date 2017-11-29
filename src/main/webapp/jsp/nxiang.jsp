@@ -1,7 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
-<%@page import="util.PageManager"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0041)http://www.xingguangerwai01.com/index.jsp -->
@@ -10,12 +8,7 @@
 
 <LINK rel=stylesheet 
 type=text/css href="/nelecemarket/nelecemarket_files/css.css">
-<%
-String id = request.getParameter("id");
-CommDAO cDAO = new CommDAO();
-HashMap map = cDAO.getmap(id,"news");
-cDAO.close();
- %>
+
 <META name=GENERATOR content="MSHTML 8.00.6001.19258"></HEAD>
 <BODY>
  
@@ -39,7 +32,7 @@ cDAO.close();
                       <TD width=20 height="28">
                         <DIV align=center><IMG src="nelecemarket_files/icon01.jpg" 
                         width=9 height=26></DIV></TD>
-                      <TD class=green_title01>平台资讯&nbsp;&nbsp;>>&nbsp;&nbsp;<%=map.get("title") %></TD>
+                      <TD class=green_title01>平台资讯&nbsp;&nbsp;>>&nbsp;&nbsp;</TD>
                       <TD width=50>
                       <DIV align=center></DIV></TD></TR></TBODY></TABLE></TD></TR>
               <TR>
@@ -78,31 +71,16 @@ cDAO.close();
                                 <TD vAlign=center width="" align=left>
                                 
                                 <center>
-                                <font size="4"><strong><%=Info.subStr(map.get("title").toString(),210)  %></strong></font>
-                                <br />
+                                <font size="4"><strong></strong></font>
+                                <br /> 发布时间 : 
+                               		 <br />
+                              
+                                 <img src="upfile/" height="290" />
                                 
-                                发布时间 : <%=map.get("savetime") %>
-                                
-                                <br />
-                                
-                                <%
-                                if(!map.get("filename").equals("")){
-                                 %>
-                                 <img src="upfile/<%=map.get("filename") %>" height="290" />
-                                 <%} %>
                                 </center>
-                                <%=map.get("content") %>
-                                
-                                
-                                
                                  </TD>
                               </TR>
-                             
-                                
-                                
-                             
-                                
-                                
+                         
                                  </TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
            
       </TR></TBODY></TABLE></TD></TR></TBODY></TABLE>

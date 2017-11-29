@@ -1,7 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
-<%@page import="util.PageManager"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0041)http://www.xingguangerwai01.com/index.jsp -->
@@ -23,36 +21,6 @@ type=text/css href="/nelecemarket/nelecemarket_files/css.css">
         <TBODY>
         <TR >
           <TD  background=nelecemarket_files/all.jpg>
-          
-          <%
-          String id = request.getParameter("id");
-          String sc = request.getParameter("sc");
-          CommDAO cDAO = new CommDAO();
-          HashMap mmm = cDAO.getmap(id,"pros");
-          cDAO.close();
-          if(null != sc && sc.equals("sc")){
-			HashMap ext = new HashMap();
-			ext.put("saver",Info.getUser(request).get("uname"));
-			ext.put("pid",id);
-			CommDAO cDAO1 = new CommDAO();
-			cDAO1.insert(request,response,"shoucang",ext,true,false);
-			cDAO1.close();
-			}
-           %>
-          
-          <%
- if(Info.getUser(request)!=null){
-HashMap ext = new HashMap();
-ext.put("savetime",Info.getDateStr());
-ext.put("saver",Info.getUser(request).get("uname"));
-ext.put("pid",id);
-ext.put("infotype","商品");
-CommDAO cDAO2 = new CommDAO();
-cDAO2.insert(request,response,"pinlun",ext,true,false);
-cDAO2.close();
-}
- %>
-          
            <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
                     <TBODY>
                     <TR>
@@ -80,19 +48,6 @@ cDAO2.close();
                     <TBODY>
                     <TR>  
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                       <TD vAlign=top width= >
                         <TABLE border=0 cellSpacing=0 cellPadding=0 
 width="100%">
@@ -116,7 +71,7 @@ width="100%">
                                 <TR>
                                 <TD height=24 colspan="3" 
                                 align=right vAlign=center bgColor=#f7f7f7>
-                              <strong><font color="orange"><%=mmm.get("proname") %></font></strong> 
+                              <strong><font color="orange"></font></strong> 
                                 
                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -127,12 +82,10 @@ width="100%">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 
-                                <%
-                                if(Info.getUser(request)!=null){
-                                 %>
+                               
                                	<script type="text/javascript" src="/nelecemarket/js/popups.js"></script>
-                                <a href="javascript:tocar('<%=id %>');">[放入购物车]</a>
-                                <a href="pxiang.jsp?sc=sc&id=<%=id %>&f=f">[收藏]</a>
+                                <a href="javascript:tocar('');">[放入购物车]</a>
+                                <a href="pxiang.jsp?sc=sc&id=&f=f">[收藏]</a>
                                 <script type="text/javascript">
                                 function tocar(no)
                                 {
@@ -141,9 +94,9 @@ width="100%">
                                 </script>
                                 
                                 
-                                <%}else{ %>
+                               
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <%} %>
+                            
                                 
                                 &nbsp;
                                 
@@ -154,38 +107,27 @@ width="100%">
                                 <TD 
                                 width="17%" rowspan="4" align=center vAlign=center bgColor=#ffffff>
                                 
-                                <img src="upfile/<%=mmm.get("filename") %>"   height="93" />                                </TD>
+                                <img src="upfile/"   height="93" />                                </TD>
                                 <TD width="41%" height="26" 
-                                align=left vAlign=center bgColor=#ffffff>&nbsp;价格 : <%=mmm.get("price") %></TD>
+                                align=left vAlign=center bgColor=#ffffff>&nbsp;价格 : </TD>
                                 <TD width="42%" 
-                                align=left vAlign=center bgColor=#ffffff>&nbsp;折扣 : <%=mmm.get("discount").equals("")?"不打折":(mmm.get("discount")+" 折" )%></TD>
+                                align=left vAlign=center bgColor=#ffffff>&nbsp;折扣 :</TD>
                                 </TR>
                                 <TR>
                                 <TD width="41%" height="26" 
-                                align=left vAlign=center bgColor=#ffffff>&nbsp;所属商铺 : <%=mmm.get("proshop") %></TD>
+                                align=left vAlign=center bgColor=#ffffff>&nbsp;所属商铺 :</TD>
                                 <TD width="42%" height="26" 
-                                align=left vAlign=center bgColor=#ffffff>上架时间 : <%=mmm.get("savetime") %></TD>
+                                align=left vAlign=center bgColor=#ffffff>上架时间 :</TD>
                                 </TR>
                                 <TR>
                                 <TD height="26" colspan="2" 
-                                align=left vAlign=center bgColor=#ffffff>&nbsp;商品属性 : <%=mmm.get("extbei").toString().replaceAll("@","&nbsp;&nbsp;&nbsp;") %></TD>
+                                align=left vAlign=center bgColor=#ffffff>&nbsp;商品属性 :</TD>
                                 </TR>
                                 <TR>
                                 <TD height="26" colspan="2" 
-                                align=left vAlign=center bgColor=#ffffff>&nbsp;<%=mmm.get("bei") %></TD>
+                                align=left vAlign=center bgColor=#ffffff>&nbsp;</TD>
                                 </TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
-                      
-                    
-                      
-                      
-                      
-                       
-                      
-                      
-                      
-                      
-                      
-                      
+
                       </TR>
                       
                       
@@ -194,38 +136,9 @@ width="100%">
                       <td align="center" colspan="6" height="13" valign="middle"  > </td>
                       </tr>
                       
-                    <%
-                    
-                    String sql = "select * from pinlun where infotype='商品' and pid='"+id+"'  ";
-                    
-                    sql+="order by id desc";
-                    
-                     PageManager pageManager = PageManager.getPage("pxiang.jsp?1=1&id="+id, 5, request);
-					  pageManager.doList(sql);
-					  PageManager bean = (PageManager) request.getAttribute("page");
-					  ArrayList<HashMap> nlist = (ArrayList) bean.getCollection();
-                    int j=0;
-                    CommDAO cDAO3 = new CommDAO();
-                    for(HashMap mmmm:nlist)
-                    {
-                    HashMap umap = cDAO3.select("select * from sysuser where uname='"+mmmm.get("saver")+"'").get(0);
-                     %>
+                
                     <TBODY>
-                    <TR>  
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                    <TR> 
                       <TD vAlign=top width= >
                         <TABLE border=0 cellSpacing=0 cellPadding=0 
 width="100%">
@@ -251,13 +164,13 @@ width="100%">
                                 <TD 
                                 width="8%" rowspan="2" align=center vAlign=middle bgColor=#ffffff>
                                 
-                                <img src="upfile/<%=umap.get("filename") %>"   height="55" />                                </TD>
+                                <img src="upfile/"   height="55" />                                </TD>
                                 <TD width="92%" height="30" 
-                                align=left vAlign=center bgColor=#ffffff>&nbsp;<%=mmmm.get("saver") %> ( <%=mmmm.get("savetime") %> ) : </TD>
+                                align=left vAlign=center bgColor=#ffffff>&nbsp; (  ) : </TD>
                                 </TR>
                                 <TR>
                                 <TD height="45" 
-                                align=left vAlign=top bgColor=#ffffff>&nbsp; <%=mmmm.get("content") %></TD>
+                                align=left vAlign=top bgColor=#ffffff>&nbsp; </TD>
                                 </TR>
                                 <TR>
                                  
@@ -271,10 +184,7 @@ width="100%">
                       <td align="center" colspan="6" height="5" valign="middle"></td>
                       </tr>
                       </TBODY>
-                    
-                    <%}
-                    cDAO3.close();
-                    %>
+                
                     
                     
                      <tr>
@@ -287,12 +197,10 @@ width="100%">
                     
                     
                     
-                    <%
-                    if(Info.getUser(request)!=null){
-                     %>
+                
                       <tr>
                       <td align="center" colspan="6" height="35" valign="middle">
-                      <form name="f1" method="post" action="pxiang.jsp?f=f&id=<%=id %>">
+                      <form name="f1" method="post" action="pxiang.jsp?f=f&id=">
                         <label>
                           <textarea name="content" id="content" cols="50" rows="3"></textarea>
                           </label>
@@ -300,8 +208,7 @@ width="100%">
                         <input name=""  type="submit" value="提交留言" />
                        </form>  </td>
                       </tr>
-                      <%} %>
-                      
+                  
                       
                       
                       

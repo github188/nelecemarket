@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0041)http://www.xingguangerwai01.com/index.jsp -->
@@ -29,11 +28,11 @@ var Extend = function(destination, source) {
 	}
 }
  
-var Bind = function(object, fun) {
+/*var Bind = function(object, fun) {
 	return function() {
 		return fun.apply(object, arguments);
 	}
-}
+}*/
  
 var Each = function(list, fun){
 	for (var i = 0, len = list.length; i < len; i++) { fun(list[i], i); }
@@ -167,17 +166,6 @@ RevealTrans.prototype = {
                        
                         <TD width="" height="32"   align=right>
                         
-                        <%
-                        if(request.getParameter("zx")!=null)
-                        {
-                        session.invalidate();
-                        }
-                         %>
-                        
-                      
-                      <%
-                      if(Info.getUser(request)==null){
-                       %>  
                         <label>
                         <span class="STYLE2">欢迎您来到Nike球鞋网上销售平台，请 
                         
@@ -187,31 +175,26 @@ RevealTrans.prototype = {
                         
                         <a href="regedit.jsp"><font color=gray>注册</font>      </a>                  </span>
                          </label>
-                        <%}else{ %>
                         
                          <label>
-                        <span class="STYLE2">欢迎您回来 : <%=Info.getUser(request).get("uname") %> [<%=Info.getUser(request).get("utype") %>]  
+                        <span class="STYLE2">欢迎您回来 :  []  
                         
-                        
-                        <%
-                        if(Info.getUser(request).get("utype").equals("卖家")){
-                         %>
+                    
                          &nbsp;&nbsp;&nbsp; 
                         
-                       <a href="/nelecemarket/sindex.jsp?id=<%=Info.getUser(request).get("id") %>"  > <font color=gray>去我的店子</font> </a>
-                       
-                       <%} %>
+                       <a href="/nelecemarket/sindex.jsp?id="  > <font color=gray>去我的店子</font> </a>
+               
                         
                         &nbsp;&nbsp;&nbsp; 
                         
-                       <a href="/nelecemarket/admin/" target="_blank"> <font color=gray>去<%=Info.getUser(request).get("utype") %>中心</font> </a>
+                       <a href="/nelecemarket/admin/" target="_blank"> <font color=gray>去中心</font> </a>
                         
                         &nbsp;&nbsp;&nbsp; 
                         
                         <a href="index.jsp?zx=zx"><font color=gray>退出</font>      </a>                  </span>
                          </label>
                         
-                        <%} %>
+                     
                         
                         </TD>
                       </TR>
@@ -220,70 +203,26 @@ RevealTrans.prototype = {
                   <TABLE width=94% border=0 
                   align=center cellPadding=0 cellSpacing=0>
                     <TBODY>
-                      <%
-                      CommDAO cDAO1 = new CommDAO();
-                    List<HashMap> list = cDAO1.select("select * from splb where pid='-1' order by id");
-                    cDAO1.close();
-                     %>
+                     
                       <TR>
-                        <%
-                      for(HashMap m:list){
-                       %>
-                        <TD height=14   width=120 align=middle><font color=gray><%=m.get("lbname") %></font> </TD>
-                        <%}
-                      	
-                        %>
+                       
+                        <TD height=14   width=120 align=middle><font color=gray></font> </TD>
+                        
                         <TD height=14   align=middle><span class="STYLE1">关键字</span> </TD>
                         <TD width="110" rowspan="2"   align=right valign="bottom"><label>
                           <input type="button" name="button2" id="button2" value="查找商品" onClick="f1.submit();">
                         </label></TD>
                       </TR>
                       <TR>
-                        <%
-                        String[] nustrs = {""};
-                        String[] keys = request.getParameterValues("key")==null?nustrs:request.getParameterValues("key");
-                    String key = "";
-                    for(String str:keys)
-                    {
-                    if(str==null)str="";
-                    if(str.equals(""))continue;
-                    key+=str+"-";
-                    }
-                    
-                    if(key.length()>0)key=key.substring(0,key.length()-1);
-                    String keyss = key;
-                    CommDAO cDAO2 = new CommDAO();
-                      for(HashMap m:list){
-                      List<HashMap> slist = cDAO2.select("select * from splb where pid='"+m.get("id")+"'");
-                       %>
-                        <TD height=14 align=middle><select name="key">
-                            <option value="">不限</option>
-                            <%
-                      for(HashMap mm:slist){
-                      if(key.indexOf(mm.get("lbname").toString())>-1){keyss=keyss.replaceAll(mm.get("lbname").toString(),"");}
-                       %>
-                            <option value="<%=mm.get("lbname") %>" <%if(key.indexOf(mm.get("lbname").toString())>-1){out.print("selected=selected");} %>><%=mm.get("lbname") %></option>
-                            <%} %>
+                      
                           </select>
                         </TD>
-                        <%} 
-                        cDAO2.close();
-                        
-                        %>
-                        <TD height=14   align=middle><input type="text" name="key" value="<%=keyss.replaceAll("-","") %>" size="17" />
+                        <TD height=14   align=middle><input type="text" name="key" value="" size="17" />
                         </TD>
                       </TR>
                     </TBODY>
                   </TABLE>
                 </form>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                     </TD></TR></TBODY></TABLE></TD></TR>
         <TR>
           <TD height=28>
@@ -338,12 +277,10 @@ RevealTrans.prototype = {
                   href="lxwm.jsp">联系我们</A></TD>
                 <TD><IMG src="nelecemarket_files/daohang_lines.jpg" width=2 
                   height=28></TD>
-                <%
-               		if(Info.getUser(request)!=null){
-                %>    
+                  
                 <TD width=90 align=middle><A class=top_index_daohang_text 
                   href="myshoucang.jsp">我的收藏夹</A></TD>
-                <%} %>  
+              
                 </TR></TBODY></TABLE></TD></TR>
         <TR>
           <TD height=8></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
@@ -379,15 +316,9 @@ RevealTrans.prototype = {
 var r = new RevealTrans("idShow");
  
 //添加变换对象
-<%
-CommDAO cDAO3 = new CommDAO();
-for(HashMap m:cDAO3.select("select * from news where infotype='广告' order by id")){
-%>
-r.Add('upfile/<%=m.get("filename")%>', '图片滑动展示效果', '');
- <%
- }
-cDAO3.close();
- %>
+
+r.Add('upfile/', '图片滑动展示效果', '');
+ 
  
  
 r.Start();

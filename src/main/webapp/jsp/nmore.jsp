@@ -1,7 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@page import="dao.CommDAO"%>
-<%@page import="util.Info"%>
-<%@page import="util.PageManager"%>
+
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0041)http://www.xingguangerwai01.com/index.jsp -->
@@ -64,37 +62,20 @@ type=text/css href="/nelecemarket/nelecemarket_files/css.css">
                                 <TABLE id=standard border=0 cellSpacing=0 
                                 cellPadding=0 width="100%">
                                 <TBODY>
-                              
-                              
-                              
-                              <%
-                               
-                             PageManager pageManager = PageManager.getPage("nmore.jsp?1=1", 18, request);
-							  pageManager.doList("select * from news where infotype='新闻' order by id desc");
-							  PageManager bean = (PageManager) request.getAttribute("page");
-							  ArrayList<HashMap> nlist = (ArrayList) bean.getCollection();
-                            for(HashMap m:nlist){
-                               %>
                                 <TR>
                                 <TD height=30 vAlign=center width="3%" 
                                 align=left><IMG src="nelecemarket_files/icon02.jpg" 
                                 width=4 height=7></TD>
                                 <TD vAlign=center width="85%" align=left>
-                                <A href="nxiang.jsp?id=<%=m.get("id") %>">
-                                <%=Info.subStr(m.get("title").toString(),210)  %></A> </TD>
+                                <A href="nxiang.jsp?id=">
+                               </A> </TD>
                                 <TD vAlign=center width="12%" 
-                                align=left><%=m.get("savetime") %></TD></TR>
+                                align=left></TD></TR>
                              
                                 <TR align=left  >
                                 <TD height=1 
                                 background=nelecemarket_files/xjnews_11.gif 
                                 colSpan=3></TD></TR> 
-                                
-                                <% }%>
-                                
-                                
-                                
-                                
                                 <TR align=left>
                                 <TD height=40 align="center" colSpan=3 >
                                 
