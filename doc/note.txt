@@ -1,0 +1,11 @@
+index.jsp首页
+pmore.jsp商品页 查找商品
+scjs.jsp平台介绍
+smore.jsp商铺一览
+dmore.jsp打折专区
+xsph.jsp销售排行
+cjjl.jsp成交记录
+nmore.jsp平台资讯
+lxwm.jsp联系我们
+login.jsp登陆
+regedit.jsp注册
