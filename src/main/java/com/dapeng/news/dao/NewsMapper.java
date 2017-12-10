@@ -2,7 +2,9 @@ package com.dapeng.news.dao;
 
 import com.dapeng.news.bean.News;
 import com.dapeng.news.bean.NewsExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface NewsMapper {
@@ -36,4 +38,7 @@ public interface NewsMapper {
     
     //获取平台资讯信息
 	List<News> selectInfo();
+	
+	//获取平台资讯详情信息
+	News selectDetail(Integer id);
 }

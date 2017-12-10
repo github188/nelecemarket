@@ -142,4 +142,13 @@ public class SysUser {
     public void setYue(Double yue) {
         this.yue = yue;
     }
+
+	@Override
+	public String toString() {
+		return "SysUser [id=" + id + ", uname=" + uname + ", upass=" + upass
+				+ ", utype=" + utype + ", tname=" + tname + ", sex=" + sex
+				+ ", age=" + age + ", tel=" + tel + ", addrs=" + addrs
+				+ ", filename=" + filename + ", qq=" + qq + ", bei=" + bei
+				+ ", savetime=" + savetime + ", yue=" + yue + "]";
+	}
 }

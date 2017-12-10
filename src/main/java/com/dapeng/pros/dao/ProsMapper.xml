@@ -311,4 +311,15 @@
 		WHERE
 		STATUS='上架' ORDER BY id DESC
 	</select>
+
+	<!-- 获取最新商品详情 -->
+	<select id="selectDetail" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT 
+		id,proname,filename,price,discount,proshop,savetime,extbei,bei 
+		FROM
+		pros 
+		WHERE STATUS='上架' AND 
+		id=#{id,jdbcType=INTEGER}
+	</select>
 </mapper>

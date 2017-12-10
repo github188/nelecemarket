@@ -38,4 +38,7 @@ public interface NewsService {
 
     //获取平台资讯信息
 	List<News> selectInfo();
+
+	//获取平台资讯详情信息
+	News selectDetail(Integer id);
 }

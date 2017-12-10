@@ -275,4 +275,14 @@
 		FROM news 
 		WHERE infotype='新闻' ORDER BY id DESC
 	</select>
+
+	<!-- 获取平台资讯详情信息 -->
+	<select id="selectDetail" parameterType="java.lang.Integer"
+		resultMap="ResultMapWithBLOBs">
+		SELECT 
+		id,title,savetime,filename,content 
+		FROM news 
+		WHERE infotype='新闻' AND
+		id = #{id,jdbcType=INTEGER}
+	</select>
 </mapper>

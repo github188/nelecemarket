@@ -93,21 +93,23 @@
 																													<TABLE id=standard border=0 cellSpacing=0
 																														cellPadding=0 width="100%">
 																														<TBODY>
-																															<TR>
-																																<TD height=25 vAlign=center width="3%"
-																																	align=left><IMG
-																																	src="nelecemarket_files/icon02.jpg"
-																																	width=4 height=7></TD>
-																																<TD vAlign=center width="68%" align=left>
-																																	<A href="nxiang.jsp?id="> jordan为何----title</A>
-																																</TD>
-																																<TD vAlign=center width="29%" align=left>
-																																	2017-12-12savetime
-																																</TD>
-																															</TR>
-																															<TR align=left>
-																																<TD height=1 background=nelecemarket_files/xjnews_11.gif colSpan=3></TD>
-																															</TR>
+																															<c:forEach items="${infoMessage.listNews }" var="info">
+																																<TR>
+																																	<TD height=25 vAlign=center width="3%"
+																																		align=left><IMG
+																																		src="nelecemarket_files/icon02.jpg"
+																																		width=4 height=7></TD>
+																																	<TD vAlign=center width="68%" align=left>
+																																		<A href="${APP_PATH }/getNewsDetail?id=${info.id }">${info.title }</A>
+																																	</TD>
+																																	<TD vAlign=center width="29%" align=left>
+																																		${info.savetime }
+																																	</TD>
+																																</TR>
+																																<TR align=left>
+																																	<TD height=1 background=nelecemarket_files/xjnews_11.gif colSpan=3></TD>
+																																</TR>
+																															</c:forEach>
 																														</TBODY>
 																													</TABLE>
 																												</TD>
@@ -316,44 +318,46 @@
 																													<TABLE id=standard border=0 cellSpacing=1
 																														cellPadding=0 width="100%" bgColor=#dddddd>
 																														<TBODY>
-																															<TR>
-																																<TD height=24 colspan="2" align=left
-																																	vAlign=center bgColor=#f7f7f7>
-																																	<DIV align=center style="color: orange">
-																																		<strong> 
-																																		<a href="pxiang.jsp?id=">
-																																			<font color="orange">proname</font>
-																																		</a>
-
-																																		</strong>
-																																	</DIV>
-																																	<DIV align=center></DIV>
-																																</TD>
-																															</TR>
-																															<TR>
-																																<TD width="33%" rowspan="4" align=center
-																																	vAlign=center bgColor=#ffffff><img
-																																	src="upfile/<%-- <%=filename %> --%>" width="93" height="93" />
-																																</TD>
-																																<TD width="67%" height="26" align=left
-																																	vAlign=center bgColor=#ffffff>&nbsp;价格
-																																	:price</TD>
-																															</TR>
-																															<TR>
-																																<TD width="67%" height="26" align=left
-																																	vAlign=center bgColor=#ffffff>&nbsp;折扣
-																																	:discount</TD>
-																															</TR>
-																															<TR>
-																																<TD width="67%" height="26" align=left
-																																	vAlign=center bgColor=#ffffff>&nbsp;所属商铺
-																																	:proshop</TD>
-																															</TR>
-																															<TR>
-																																<TD width="67%" height="26" align=left
-																																	vAlign=center bgColor=#ffffff>&nbsp;上架时间
-																																	:savetime</TD>
-																															</TR>
+																															<c:forEach items="${infoMessage.listPros}" var="pros">
+																																<TR>
+																																	<TD height=24 colspan="2" align=left
+																																		vAlign=center bgColor=#f7f7f7>
+																																		<DIV align=center style="color: orange">
+																																			<strong> 
+																																			<a href="${APP_PATH }/getProsDetail?id=${pros.id}">
+																																				<font color="orange">${pros.proname }</font>
+																																			</a>
+	
+																																			</strong>
+																																		</DIV>
+																																		<DIV align=center></DIV>
+																																	</TD>
+																																</TR>
+																																<TR>
+																																	<TD width="33%" rowspan="4" align=center
+																																		vAlign=center bgColor=#ffffff><img
+																																		src="upfile/${pros.filename }" width="93" height="93" />
+																																	</TD>
+																																	<TD width="67%" height="26" align=left
+																																		vAlign=center bgColor=#ffffff>&nbsp;价格
+																																		:${pros.price }</TD>
+																																</TR>
+																																<TR>
+																																	<TD width="67%" height="26" align=left
+																																		vAlign=center bgColor=#ffffff>&nbsp;折扣
+																																		:${pros.discount }</TD>
+																																</TR>
+																																<TR>
+																																	<TD width="67%" height="26" align=left
+																																		vAlign=center bgColor=#ffffff>&nbsp;所属商铺
+																																		:${pros.proshop }</TD>
+																																</TR>
+																																<TR>
+																																	<TD width="67%" height="26" align=left
+																																		vAlign=center bgColor=#ffffff>&nbsp;上架时间
+																																		:${pros.savetime }</TD>
+																																</TR>
+																															</c:forEach>
 																														</TBODY>
 																													</TABLE>
 																												</TD>
@@ -446,47 +450,49 @@
 																										cellSpacing=0 cellPadding=0 width="100%">
 																										<TBODY>
 																											<TR>
-																												<TD vAlign=top><TABLE id=standard2
-																														border=0 cellSpacing=1 cellPadding=0
-																														width="100%" bgColor=#dddddd>
-																														<TBODY>
-																															<TR>
-																																<TD height=24 colspan="2" align=left
-																																	vAlign=center bgColor=#f7f7f7><DIV
-																																		align=center style="color: orange">
-																																		<strong> <a
-																																			href="sindex.jsp?id="><font
-																																				color="orange"></font></a>
-
+																												<TD vAlign=top>
+																												<TABLE id=standard2 border=0 cellSpacing=1 cellPadding=0 width="100%" bgColor=#dddddd>
+																														<c:forEach items="${infoMessage.listSysUser }" var="sysUser">
+																															<TBODY>
+																																<TR>
+																																	<TD height=24 colspan="2" align=left vAlign=center bgColor=#f7f7f7>
+																																	<DIV align=center style="color: orange">
+																																		<strong> 
+																																			<a href="sindex.jsp?id=${sysUser.id }">
+																																			<font color="orange">${sysUser.tname }</font>
+																																			</a>
 																																		</strong>
 																																	</DIV>
-																																	<DIV align=center></DIV></TD>
-																															</TR>
-																															<TR>
-																																<TD width="33%" rowspan="3" align=center
-																																	vAlign=center bgColor=#ffffff><img
-																																	src="upfile/" width="93" height="93" />
-																																</TD>
-																																<TD width="67%" height="26" align=left
-																																	vAlign=center bgColor=#ffffff>&nbsp;店主
-																																	:uname</TD>
-																															</TR>
-																															<TR>
-																																<TD width="67%" height="52"
-																																	style="padding: 2px" align=left
-																																	vAlign=top bgColor=#ffffff>&nbsp;
-																																	bei
-																																	&nbsp;
-																																</TD>
-																															</TR>
-
-																															<TR>
-																																<TD width="67%" height="26" align=left
-																																	vAlign=center bgColor=#ffffff>&nbsp;加盟时间
-																																	:savetime</TD>
-																															</TR>
-																														</TBODY>
-																													</TABLE></TD>
+																																	<DIV align=center></DIV>
+																																	</TD>
+																																</TR>
+																																<TR>
+																																	<TD width="33%" rowspan="3" align=center
+																																		vAlign=center bgColor=#ffffff><img
+																																		src="upfile/${sysUser.filename }" width="93" height="93" />
+																																	</TD>
+																																	<TD width="67%" height="26" align=left
+																																		vAlign=center bgColor=#ffffff>&nbsp;店主
+																																		:${sysUser.uname }</TD>
+																																</TR>
+																																<TR>
+																																	<TD width="67%" height="52"
+																																		style="padding: 2px" align=left
+																																		vAlign=top bgColor=#ffffff>&nbsp;
+																																		${sysUser.bei }
+																																		&nbsp;
+																																	</TD>
+																																</TR>
+	
+																																<TR>
+																																	<TD width="67%" height="26" align=left
+																																		vAlign=center bgColor=#ffffff>&nbsp;加盟时间
+																																		:${sysUser.savetime }</TD>
+																																</TR>
+																															</TBODY>
+																														</c:forEach>
+																												</TABLE>
+																												</TD>
 																											</TR>
 																										</TBODY>
 																									</TABLE></TD>
@@ -528,7 +534,7 @@
 	});
 	//首页页面展示
 	function showInfo(){
-		document.dapeng.action="/";
+		document.dapeng.action="${APP_PATH}/showInfo";
 		document.dapeng.submit();
 	}
 </script>

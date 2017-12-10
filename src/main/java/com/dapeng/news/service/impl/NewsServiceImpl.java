@@ -106,4 +106,10 @@ public class NewsServiceImpl implements NewsService {
 		return newsMapper.selectInfo();
 	}
 
+	@Override
+	public News selectDetail(Integer id) {
+		
+		return newsMapper.selectDetail(id);
+	}
+
 }

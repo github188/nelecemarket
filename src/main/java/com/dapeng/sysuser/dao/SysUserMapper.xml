@@ -354,7 +354,7 @@
 	<!-- 获取最新加盟店铺信息 -->
 	<select id="selectInfo" resultMap="BaseResultMap">
 		SELECT 
-		id,uname,bei,savetime 
+		id,uname,bei,savetime,filename,tname 
 		FROM sysuser 
 		WHERE utype='卖家' ORDER BY id DESC
 	</select>

@@ -32,4 +32,7 @@ public interface ProsService {
 
 	//获取最新商品信息
 	List<Pros> selectInfo();
+
+	//获取最新商品详情
+	Pros selectDetail(Integer id);
 }

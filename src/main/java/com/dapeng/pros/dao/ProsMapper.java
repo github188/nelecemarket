@@ -2,7 +2,9 @@ package com.dapeng.pros.dao;
 
 import com.dapeng.pros.bean.Pros;
 import com.dapeng.pros.bean.ProsExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface ProsMapper {
@@ -30,4 +32,7 @@ public interface ProsMapper {
     
 	//获取最新商品信息
 	List<Pros> selectInfo();
+	
+	//获取最新商品详情
+	Pros selectDetail(Integer id);
 }
