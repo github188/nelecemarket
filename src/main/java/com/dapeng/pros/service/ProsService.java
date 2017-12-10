@@ -29,4 +29,7 @@ public interface ProsService {
     int updateByPrimaryKeySelective(Pros record);
 
     int updateByPrimaryKey(Pros record);
+
+	//获取最新商品信息
+	List<Pros> selectInfo();
 }

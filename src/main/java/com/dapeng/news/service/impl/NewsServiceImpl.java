@@ -100,4 +100,10 @@ public class NewsServiceImpl implements NewsService {
 		return 0;
 	}
 
+	@Override
+	public List<News> selectInfo() {
+		
+		return newsMapper.selectInfo();
+	}
+
 }

@@ -5,25 +5,25 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dapeng.sysuser.bean.SysUuer;
-import com.dapeng.sysuser.bean.SysUuerExample;
-import com.dapeng.sysuser.dao.SysUuerMapper;
+import com.dapeng.sysuser.bean.SysUser;
+import com.dapeng.sysuser.bean.SysUserExample;
+import com.dapeng.sysuser.dao.SysUserMapper;
 import com.dapeng.sysuser.service.SysUserService;
 
 @Service
 public class SysUserServiceImpl implements SysUserService {
 	
 	@Autowired
-	private SysUuerMapper sysUuerMapper;
-	
+	private SysUserMapper sysUserMapper;
+
 	@Override
-	public long countByExample(SysUuerExample example) {
+	public long countByExample(SysUserExample example) {
 		
 		return 0;
 	}
 
 	@Override
-	public int deleteByExample(SysUuerExample example) {
+	public int deleteByExample(SysUserExample example) {
 		
 		return 0;
 	}
@@ -35,51 +35,58 @@ public class SysUserServiceImpl implements SysUserService {
 	}
 
 	@Override
-	public int insert(SysUuer record) {
+	public int insert(SysUser record) {
 		
 		return 0;
 	}
 
 	@Override
-	public int insertSelective(SysUuer record) {
+	public int insertSelective(SysUser record) {
 		
 		return 0;
 	}
 
 	@Override
-	public List<SysUuer> selectByExample(SysUuerExample example) {
+	public List<SysUser> selectByExample(SysUserExample example) {
 		
 		return null;
 	}
 
 	@Override
-	public SysUuer selectByPrimaryKey(Integer id) {
+	public SysUser selectByPrimaryKey(Integer id) {
 		
 		return null;
 	}
 
 	@Override
-	public int updateByExampleSelective(SysUuer record, SysUuerExample example) {
+	public int updateByExampleSelective(SysUser record, SysUserExample example) {
 		
 		return 0;
 	}
 
 	@Override
-	public int updateByExample(SysUuer record, SysUuerExample example) {
+	public int updateByExample(SysUser record, SysUserExample example) {
 		
 		return 0;
 	}
 
 	@Override
-	public int updateByPrimaryKeySelective(SysUuer record) {
+	public int updateByPrimaryKeySelective(SysUser record) {
 		
 		return 0;
 	}
 
 	@Override
-	public int updateByPrimaryKey(SysUuer record) {
+	public int updateByPrimaryKey(SysUser record) {
 		
 		return 0;
 	}
+
+	@Override
+	public List<SysUser> selectInfo() {
+		
+		return sysUserMapper.selectInfo();
+	}
+	
 
 }

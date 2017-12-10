@@ -1,16 +1,12 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
- 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0041)http://www.xingguangerwai01.com/index.jsp -->
 <HTML xmlns="http://www.w3.org/1999/xhtml">
 <HEAD>
 <TITLE>Nike球鞋网上销售平台</TITLE>
 <META content="text/html; charset=utf-8" http-equiv=Content-Type>
-
 <LINK rel=stylesheet type=text/css
 	href="/nelecemarket/nelecemarket_files/css.css">
-
 <META name=GENERATOR content="MSHTML 8.00.6001.19258">
 </HEAD>
 <BODY>
@@ -80,25 +76,11 @@
 																												<TD width="14%"></TD>
 																											</TR>
 																											<TR align="center">
-
-
-
-
-
-
-
-
-
 																												<TD height="40"><A href=""
 																													target=_blank> <IMG title="" border=0
 																														src="upfile/" width=103 height=39></A></TD>
-
-
-
-
 																											</TR>
 																											<TR align="center">
-
 																												<TD height="28" valign="middle"></TD>
 																											</TR>
 																										</TBODY>

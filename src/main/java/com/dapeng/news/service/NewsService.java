@@ -35,4 +35,7 @@ public interface NewsService {
     int updateByPrimaryKeyWithBLOBs(News record);
 
     int updateByPrimaryKey(News record);
+
+    //获取平台资讯信息
+	List<News> selectInfo();
 }

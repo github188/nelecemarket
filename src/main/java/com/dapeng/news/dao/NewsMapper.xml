@@ -267,4 +267,12 @@
       filename = #{filename,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+	<!-- 获取平台资讯信息 -->
+	<select id="selectInfo" resultMap="BaseResultMap">
+		SELECT 
+		id,title,savetime 
+		FROM news 
+		WHERE infotype='新闻' ORDER BY id DESC
+	</select>
 </mapper>

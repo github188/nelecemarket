@@ -82,4 +82,10 @@ public class ProsServiceImpl implements ProsService {
 		return 0;
 	}
 
+	@Override
+	public List<Pros> selectInfo() {
+		
+		return prosMapper.selectInfo();
+	}
+
 }

@@ -1,6 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
- 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0041)http://www.xingguangerwai01.com/index.jsp -->
 <HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>Nike球鞋网上销售平台</TITLE>
@@ -21,10 +19,6 @@ type=text/css href="/nelecemarket/nelecemarket_files/css.css">
         <TBODY>
         <TR >
           <TD  background=nelecemarket_files/all.jpg>
-          
-          
-          
-          
            <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
                     <TBODY>
                     <TR>
@@ -35,10 +29,6 @@ type=text/css href="/nelecemarket/nelecemarket_files/css.css">
                       <TD width=50>
                       <DIV align=center><A 
                         href="pmore.jsp"><br></A></DIV></TD></TR></TBODY></TABLE>
-          
-          
-          
-          
           </TD></TR>
         <TR>
           <TD vAlign=top>
@@ -52,8 +42,7 @@ type=text/css href="/nelecemarket/nelecemarket_files/css.css">
                     <TBODY>
                     <TR>  
                       <TD vAlign=top width=33%>
-                        <TABLE border=0 cellSpacing=0 cellPadding=0 
-width="100%">
+                        <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
                           <TBODY>
                           <TR>
                             <TD vAlign=top>
@@ -65,7 +54,6 @@ width="100%">
                                 <TABLE border=0 cellSpacing=0 cellPadding=0 
                                 width="100%">
                                 <TBODY>
-                               
                                 <TR>
                                 <TD vAlign=top  >
                                 <TABLE id=standard border=0 cellSpacing=1 
@@ -84,7 +72,6 @@ width="100%">
                                 <TR>
                                 <TD 
                                 width="33%" rowspan="4" align=center vAlign=center bgColor=#ffffff>
-                                
                                 <img src="upfile/" width="93" height="93" />                                </TD>
                                 <TD width="67%" height="26" 
                                 align=left vAlign=center bgColor=#ffffff>&nbsp;价格 : </TD>
@@ -101,39 +88,15 @@ width="100%">
                                 <TD width="67%" height="26" 
                                 align=left vAlign=center bgColor=#ffffff>&nbsp;上架时间 :</TD>
                                 </TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
-                      
-                   
                       <TD width=10></TD>
-                
-                      
                       </tr>
-                      
                       <tr><td height="3"></td></tr>
-                      
                       <tr>
-                      
-                  
-                      
-                      
-                       
-                      
-                      
-                      
-                      
-                      
-                      
                       </TR>
-                      
-                      
-                      
                       <tr>
                       <td align="center" colspan="6" height="35" valign="middle">${page.info }</td>
                       </tr>
-                      
-                      
                       </TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
  <jsp:include page="foot.jsp"></jsp:include>
-      
-      
 </BODY></HTML>
 

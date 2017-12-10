@@ -302,4 +302,13 @@
       cjnum = #{cjnum,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+	<!-- 获取最新商品信息 -->
+	<select id="selectInfo" resultMap="BaseResultMap">
+		SELECT 
+		id,proname,filename,price,discount,proshop,savetime 
+		FROM pros 
+		WHERE
+		STATUS='上架' ORDER BY id DESC
+	</select>
 </mapper>

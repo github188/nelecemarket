@@ -2,37 +2,32 @@ package com.dapeng.sysuser.bean;
 
 import java.util.Date;
 
-/**
- * 用户表
- * @author dapeng
- *
- */
-public class SysUuer {
+public class SysUser {
     private Integer id;
 
-    private String uname;//用户名
+    private String uname;
 
-    private String upass;//登录密码
+    private String upass;
 
-    private String utype;//用户类别
+    private String utype;
 
-    private String tname;//姓名
+    private String tname;
 
-    private String sex;//性别
+    private String sex;
 
-    private String age;//年龄
+    private String age;
 
-    private String tel;//联系电话
+    private String tel;
 
-    private String addrs;//地址
+    private String addrs;
 
-    private String filename;//头像
+    private String filename;
 
-    private String qq;//QQ
+    private String qq;
 
-    private String bei;//说明
+    private String bei;
 
-    private Date savetime;//注册时间
+    private Date savetime;
 
     private Double yue;
 
@@ -147,14 +142,4 @@ public class SysUuer {
     public void setYue(Double yue) {
         this.yue = yue;
     }
-
-	@Override
-	public String toString() {
-		return "SysUuer [id=" + id + ", uname=" + uname + ", upass=" + upass
-				+ ", utype=" + utype + ", tname=" + tname + ", sex=" + sex
-				+ ", age=" + age + ", tel=" + tel + ", addrs=" + addrs
-				+ ", filename=" + filename + ", qq=" + qq + ", bei=" + bei
-				+ ", savetime=" + savetime + ", yue=" + yue + "]";
-	}
-    
 }

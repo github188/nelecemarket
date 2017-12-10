@@ -1,13 +1,11 @@
-package com.dapeng.sysuser.service;
-
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
+package com.dapeng.sysuser.dao;
 
 import com.dapeng.sysuser.bean.SysUser;
 import com.dapeng.sysuser.bean.SysUserExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
-public interface SysUserService {
+public interface SysUserMapper {
     long countByExample(SysUserExample example);
 
     int deleteByExample(SysUserExample example);
@@ -29,7 +27,7 @@ public interface SysUserService {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
-
+    
 	//获取最新加盟店铺信息
 	List<SysUser> selectInfo();
 }
