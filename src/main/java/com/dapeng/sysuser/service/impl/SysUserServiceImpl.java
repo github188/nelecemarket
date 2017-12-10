@@ -87,6 +87,12 @@ public class SysUserServiceImpl implements SysUserService {
 		
 		return sysUserMapper.selectInfo();
 	}
+
+	@Override
+	public SysUser selectDetail(Integer id) {
+		
+		return sysUserMapper.selectDetail(id);
+	}
 	
 
 }

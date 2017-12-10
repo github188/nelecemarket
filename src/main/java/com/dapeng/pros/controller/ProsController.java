@@ -74,4 +74,16 @@ public class ProsController {
 		map.put("pros", pros);
 		return "pxiang";
 	}
+	
+	/**
+	 * 店铺详情
+	 */
+	@RequestMapping(value="/getSysUserDetail",method=RequestMethod.POST)
+	public String getSysUserDetail(@RequestParam("id")Integer id){
+		Map<String,SysUser> map = new HashMap<String,SysUser>();
+		//查询店铺详情信息
+		SysUser sysUser = sysUserService.selectDetail(id);
+		map.put("sysUser", sysUser);
+		return "sindex";
+	}
 }

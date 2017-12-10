@@ -458,7 +458,7 @@
 																																	<TD height=24 colspan="2" align=left vAlign=center bgColor=#f7f7f7>
 																																	<DIV align=center style="color: orange">
 																																		<strong> 
-																																			<a href="sindex.jsp?id=${sysUser.id }">
+																																			<a href="${APP_PATH }/getSysUserDetail?id=${sysUser.id }">
 																																			<font color="orange">${sysUser.tname }</font>
 																																			</a>
 																																		</strong>

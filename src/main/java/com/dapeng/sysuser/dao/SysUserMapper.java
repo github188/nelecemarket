@@ -2,7 +2,9 @@ package com.dapeng.sysuser.dao;
 
 import com.dapeng.sysuser.bean.SysUser;
 import com.dapeng.sysuser.bean.SysUserExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SysUserMapper {
@@ -30,4 +32,7 @@ public interface SysUserMapper {
     
 	//获取最新加盟店铺信息
 	List<SysUser> selectInfo();
+	
+	//查询店铺详情信息
+	SysUser selectDetail(Integer id);
 }

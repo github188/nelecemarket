@@ -358,4 +358,12 @@
 		FROM sysuser 
 		WHERE utype='卖家' ORDER BY id DESC
 	</select>
+	
+	<!-- 查询店铺详情信息 -->
+	<select id="selectDetail" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	SELECT 
+	<include refid="Base_Column_List" /> 
+	FROM sysuser 
+	WHERE id=#{id,jdbcType=INTEGER} 
+	</select>
 </mapper>

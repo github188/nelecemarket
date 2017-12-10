@@ -32,4 +32,7 @@ public interface SysUserService {
 
 	//获取最新加盟店铺信息
 	List<SysUser> selectInfo();
+
+	//查询店铺详情信息
+	SysUser selectDetail(Integer id);
 }
